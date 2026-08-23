@@ -7,8 +7,6 @@ from __future__ import annotations
 from datetime import date, timedelta
 from pathlib import Path
 
-import pandas as pd
-
 from bv.ablage import Ablage, jetzt
 from bv.konfiguration import PROJEKTWURZEL
 
