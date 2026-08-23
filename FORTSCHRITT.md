@@ -7,7 +7,7 @@
 - [x] M4 — Zensierungskorrektur (Tagesverlaufskurve, Ausverkaufserkennung)
 - [x] M5 — Merkmale und Quantilmodelle (kein Blick in die Zukunft)
 - [x] M6 — Servicegrad und Vorschlag mit Begründung
-- [ ] M7 — Rückrechnung (Backtest, vier Verfahren, Fehler gegen die Wahrheit)
+- [x] M7 — Rückrechnung (Backtest, vier Verfahren, Fehler gegen die Wahrheit)
 - [x] M8 — Nachtlauf und Wächter (Rückfallwert um 06:30)
 - [ ] M9 — Oberfläche fürs Tablet (vier Ansichten)
 
