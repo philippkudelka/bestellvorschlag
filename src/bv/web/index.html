@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bestellvorschlag</title>
+  <link rel="stylesheet" href="/web/stil.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <button data-ansicht="uebersicht" class="aktiv">Tagesübersicht</button>
+      <button data-ansicht="bestellung">Bestellvorschlag</button>
+      <button data-ansicht="servicegrade">Servicegrade</button>
+      <button data-ansicht="ereignisse">Ereignisse</button>
+    </nav>
+    <div id="kopf-rechts">
+      <label for="liefertag">Liefertag</label>
+      <input type="date" id="liefertag">
+    </div>
+  </header>
+
+  <main>
+    <section id="ansicht-uebersicht" class="ansicht">
+      <div id="warnung-kasten" hidden></div>
+      <h1>Wo heute genauer hinschauen?</h1>
+      <table id="uebersicht-tabelle">
+        <thead>
+          <tr>
+            <th>Filiale</th><th>Öffnungszeit</th><th>Zustand</th>
+            <th class="zahl">Auffällige Positionen</th>
+            <th class="zahl">Retourenquote Vorwoche</th><th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="ansicht-bestellung" class="ansicht" hidden>
+      <div class="filialwahl" id="bestellung-filialwahl"></div>
+      <div id="bestellung-kopf"></div>
+      <table id="bestellung-tabelle">
+        <thead>
+          <tr>
+            <th>Art.-Nr.</th><th>Bezeichnung</th>
+            <th class="zahl">Vorschlag</th>
+            <th class="zahl">Vorwoche geliefert</th>
+            <th class="zahl">Vorwoche Retoure</th>
+            <th class="zahl">Bestellmenge</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="fussleiste">
+        <span id="bestellung-hinweis">Vorschlag prüfen, Mengen ggf. anpassen,
+          in die Warenwirtschaft übertragen — dann bestätigen.</span>
+        <button id="bestellung-uebernehmen" class="haupt">Bestellung übernommen</button>
+      </div>
+    </section>
+
+    <section id="ansicht-servicegrade" class="ansicht" hidden>
+      <div class="filialwahl" id="servicegrade-filialwahl"></div>
+      <h1>Servicegrade einstellen</h1>
+      <p class="erklaerung">A = darf nicht ausgehen · B = darf am späten
+        Nachmittag ausgehen · C = darf mittags weg sein.
+        Die Mengenspalte zeigt sofort, was die Wahl bedeutet.</p>
+      <table id="servicegrade-tabelle">
+        <thead>
+          <tr><th>Art.-Nr.</th><th>Bezeichnung</th><th>Servicegrad</th>
+            <th class="zahl">Menge bei dieser Wahl</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="ansicht-ereignisse" class="ansicht" hidden>
+      <h1>Ereigniskalender</h1>
+      <form id="ereignis-formular">
+        <div class="feld"><label>Von</label><input type="date" name="datum_von" required></div>
+        <div class="feld"><label>Bis</label><input type="date" name="datum_bis" required></div>
+        <div class="feld"><label>Filialen</label>
+          <input type="text" name="filialen" value="alle" title="z. B. alle oder 3,7"></div>
+        <div class="feld breit"><label>Was ist los?</label>
+          <input type="text" name="bezeichnung" placeholder="z. B. Dorffest Prien" required></div>
+        <div class="feld"><label>Erwartete Wirkung</label>
+          <select name="wirkung">
+            <option value="1.2">mehr Verkauf (+20 %)</option>
+            <option value="1.5">viel mehr Verkauf (+50 %)</option>
+            <option value="0.7">weniger Verkauf (−30 %)</option>
+            <option value="0.5">viel weniger Verkauf (−50 %)</option>
+          </select></div>
+        <button type="submit" class="haupt">Eintragen</button>
+      </form>
+      <table id="ereignis-tabelle">
+        <thead>
+          <tr><th>Von</th><th>Bis</th><th>Filialen</th><th>Bezeichnung</th>
+            <th class="zahl">Wirkung</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/web/app.js"></script>
+</body>
+</html>

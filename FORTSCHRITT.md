@@ -9,7 +9,7 @@
 - [x] M6 — Servicegrad und Vorschlag mit Begründung
 - [x] M7 — Rückrechnung (Backtest, vier Verfahren, Fehler gegen die Wahrheit)
 - [x] M8 — Nachtlauf und Wächter (Rückfallwert um 06:30)
-- [ ] M9 — Oberfläche fürs Tablet (vier Ansichten)
+- [x] M9 — Oberfläche fürs Tablet (vier Ansichten)
 
 ## Kür (nur wenn M0–M9 grün)
 
