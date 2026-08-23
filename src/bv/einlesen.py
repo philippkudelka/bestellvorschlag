@@ -112,10 +112,11 @@ def _importiere_begleitdateien(ablage: Ablage, verzeichnis: Path) -> None:
         n = ablage.schreibe("wetter", df)
         ablage.protokolliere_import("synthetisch", "wetter.csv", len(df), n, 0)
     ereignisse = verzeichnis / "ereignisse.csv"
-    if ereignisse.exists():
+    if ereignisse.exists() and ereignisse.stat().st_size > 0:
         df = pd.read_csv(ereignisse)
-        n = ablage.schreibe("ereignis", df)
-        ablage.protokolliere_import("synthetisch", "ereignisse.csv", len(df), n, 0)
+        if not df.empty:
+            n = ablage.schreibe("ereignis", df)
+            ablage.protokolliere_import("synthetisch", "ereignisse.csv", len(df), n, 0)
     wahrheit = verzeichnis / "wahrheit.csv"
     if wahrheit.exists():
         df = pd.read_csv(wahrheit, dtype={"artikel": str})

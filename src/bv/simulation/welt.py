@@ -201,7 +201,8 @@ def erzeuge_ereignisse(
                 "filialen": fil, "bezeichnung": "Aktionswoche", "art": "aktion",
                 "wirkung": 1.2,
             })
-    return pd.DataFrame(zeilen)
+    return pd.DataFrame(zeilen, columns=["datum_von", "datum_bis", "filialen",
+                                         "bezeichnung", "art", "wirkung"])
 
 
 # ---------------------------------------------------------------------------

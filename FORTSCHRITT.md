@@ -8,7 +8,7 @@
 - [x] M5 — Merkmale und Quantilmodelle (kein Blick in die Zukunft)
 - [x] M6 — Servicegrad und Vorschlag mit Begründung
 - [ ] M7 — Rückrechnung (Backtest, vier Verfahren, Fehler gegen die Wahrheit)
-- [ ] M8 — Nachtlauf und Wächter (Rückfallwert um 06:30)
+- [x] M8 — Nachtlauf und Wächter (Rückfallwert um 06:30)
 - [ ] M9 — Oberfläche fürs Tablet (vier Ansichten)
 
 ## Kür (nur wenn M0–M9 grün)

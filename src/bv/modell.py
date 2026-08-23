@@ -33,7 +33,9 @@ def _neues_modell(backend: str, quantil: float, einstellungen: dict):
         return lgb.LGBMRegressor(
             objective="quantile", alpha=quantil,
             n_estimators=n_baeume, learning_rate=lernrate,
-            num_leaves=63, min_child_samples=30, verbose=-1,
+            num_leaves=int(einstellungen.get("num_leaves", 63)),
+            n_jobs=int(einstellungen.get("n_jobs", -1)),
+            min_child_samples=30, verbose=-1,
         )
     from sklearn.ensemble import HistGradientBoostingRegressor
 

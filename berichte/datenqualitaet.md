@@ -1,6 +1,6 @@
 # Datenqualitätsbericht
 
-Erzeugt: 2026-08-23T22:02:10+02:00
+Erzeugt: 2026-08-23T22:21:01+02:00
 
 Datenzeitraum: 2023-08-28 bis 2026-08-22
 

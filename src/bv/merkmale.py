@@ -43,18 +43,34 @@ def baue_merkmale(
     konfig: Konfiguration,
     liefertage: list[str],
     mit_ziel: bool = True,
+    quelle: str = "nachfrage",
 ) -> pd.DataFrame:
     """Merkmalszeilen fuer die gegebenen Liefertage, nur Artikel im Umfang.
 
     Ergebnis: Schluessel (liefertag, filiale, artikel, warengruppe),
     Merkmale laut MERKMALSLISTE, und `ziel` (Nachfrage an T), falls bekannt.
+
+    `quelle` ist normalerweise die zensierungskorrigierte Tabelle `nachfrage`;
+    `verkauf` dient nur der Rueckrechnung, um die Wirkung der Korrektur zu
+    messen (Modellvariante ohne Korrektur).
     """
     artikel = ablage.lese(
         "SELECT nummer, warengruppe FROM artikel WHERE im_umfang = 1")
     im_umfang = set(artikel["nummer"])
     wg = dict(zip(artikel["nummer"], artikel["warengruppe"]))
 
-    nachfrage = ablage.lese("SELECT datum, filiale, artikel, menge FROM nachfrage")
+    nachfrage = ablage.lese(f"SELECT datum, filiale, artikel, menge FROM {quelle}")
+    if quelle != "nachfrage":
+        # Nummernwechsel wird sonst in der Zensierung angewandt
+        umbenennung = {
+            str(alt): str(neu)
+            for alt, neu in (konfig.einstellungen.get("artikel_umbenennungen") or {}).items()
+        }
+        if umbenennung:
+            nachfrage["artikel"] = nachfrage["artikel"].map(
+                lambda a: umbenennung.get(a, a))
+            nachfrage = nachfrage.groupby(
+                ["datum", "filiale", "artikel"], as_index=False)["menge"].sum()
     nachfrage = nachfrage[nachfrage["artikel"].isin(im_umfang)]
     if nachfrage.empty:
         return pd.DataFrame()

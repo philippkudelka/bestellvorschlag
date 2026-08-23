@@ -24,6 +24,10 @@ modell:
   n_estimators: 120
   learning_rate: 0.08
   trainingsfenster_tage: 400     # nur die letzten N Tage lernen
+  # abgespeckte Werte fuer die Rueckrechnung (viele Neutrainings,
+  # muss in unter zehn Minuten durchlaufen)
+  backtest_n_estimators: 60
+  backtest_fenster_tage: 200
 
 vorschlag:
   auffaellig_abweichung_prozent: 25   # Abweichung zur Vorwoche, ab der markiert wird
