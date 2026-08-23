@@ -1,0 +1,64 @@
+# Zentrale Einstellungen. Aenderungen hier aendern nicht das Modell,
+# nur welcher Punkt der Verteilung vorgeschlagen wird bzw. welche
+# Schwellen gelten.
+
+datenbank: daten/bestellvorschlag.sqlite
+
+# Abbildung Servicegradklasse -> Quantil
+servicegrade:
+  A: 0.95   # darf auf keinen Fall ausgehen
+  B: 0.80   # soll am spaeten Nachmittag ausgehen
+  C: 0.60   # soll mittags weg sein
+
+# Quantile, fuer die Modelle trainiert werden
+quantile: [0.5, 0.6, 0.8, 0.9, 0.95]
+
+zensierung:
+  schwelle_retoure: 0            # Retoure <= Schwelle
+  mindestabstand_minuten: 10     # letzter Verkauf >= 10 Min. vor Ladenschluss
+  anteil_liefermenge: 0.98       # verkauft >= 98 % der Liefermenge
+  untergrenze_kurvenanteil: 0.35 # darunter deckeln und Tag als unsicher markieren
+
+modell:
+  backend: lightgbm              # oder: sklearn (HistGradientBoostingRegressor)
+  n_estimators: 120
+  learning_rate: 0.08
+  trainingsfenster_tage: 400     # nur die letzten N Tage lernen
+
+vorschlag:
+  auffaellig_abweichung_prozent: 25   # Abweichung zur Vorwoche, ab der markiert wird
+  hohe_retoure_prozent: 30            # Vorwochenretoure, ab der markiert wird
+
+waechter:
+  max_abweichung_vorwoche_prozent: 40
+  max_abweichung_vorjahr_prozent: 25
+  max_modellalter_tage: 14
+  max_fehlende_tage: 2
+
+nachtlauf:
+  training_wochentag: 0          # montags neu trainieren (0 = Montag)
+
+# Spaltenzuordnung fuer den echten B.I.T.-64-Export von Ulmer Kemo.
+# ES LIEGEN NOCH KEINE ECHTEN DATEN VOR — die Werte hier sind bewusst leer
+# und muessen beim ersten Kontakt mit einer echten Datei ausgefuellt werden.
+# Der Adapter bit_csv wirft bis dahin NotImplementedError mit einem Hinweis,
+# welche Felder gebraucht werden.
+bit_csv:
+  verzeichnis: null              # Ablageort der echten Exportdateien
+  trennzeichen: ";"
+  zeichensatz: "cp1252"
+  kopfzeilen: null               # Zahl der Zeilen vor der Tabelle
+  spalten:
+    filiale: null
+    artikel: null
+    bezeichnung: null
+    datum: null
+    liefermenge: null
+    verkauf: null
+    retoure: null
+    erster_verkauf: null
+    letzter_verkauf: null
+
+# Synthetische Quelle (Simulator-Export)
+synthetisch:
+  verzeichnis: daten/synthetisch

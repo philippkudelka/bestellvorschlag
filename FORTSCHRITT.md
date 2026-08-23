@@ -1,7 +1,7 @@
 # Fortschritt
 
 - [x] M0 — Gerüst: Repository, pyproject, venv, ruff, pytest, README
-- [ ] M1 — Kanonisches Datenmodell und Ablage (SQLite)
+- [x] M1 — Kanonisches Datenmodell und Ablage (SQLite)
 - [ ] M2 — Simulator: Welt mit bekannter Wahrheit, B.I.T.-ähnlicher Export
 - [ ] M3 — Import und Datenqualitätsbericht
 - [ ] M4 — Zensierungskorrektur (Tagesverlaufskurve, Ausverkaufserkennung)
