@@ -59,6 +59,12 @@ bit_csv:
     erster_verkauf: null
     letzter_verkauf: null
 
+# Zuordnung bei Nummernwechsel im Fremdsystem: neue Nummer -> alte Nummer.
+# Wird beim Aufbau der Nachfragetabelle angewandt, damit die Historie
+# zusammenhaengend gelernt wird. Quelle: Datenqualitaetsbericht.
+artikel_umbenennungen:
+  "00459": "00409"
+
 # Synthetische Quelle (Simulator-Export)
 synthetisch:
   verzeichnis: daten/synthetisch

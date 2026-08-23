@@ -12,6 +12,7 @@ dependencies = [
     "uvicorn>=0.27",
     "pyyaml>=6.0",
     "holidays>=0.40",
+    "tabulate>=0.9",
 ]
 
 [project.optional-dependencies]

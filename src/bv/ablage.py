@@ -108,10 +108,15 @@ class Ablage:
         ).fetchone()[0]
         if zu:
             return []
+        # Feiertagsregel: an Feiertagen gilt der Sonntagsplan (Filialen ohne
+        # Sonntagsoeffnung sind zu) — gleiche Regel wie im Simulator.
+        from bv.quellen import kalender
+
+        wochentag = 6 if kalender.ist_feiertag(datum) else datum.weekday()
         zeilen = self.verbindung.execute(
             "SELECT von, bis FROM oeffnungszeit WHERE filiale = ? AND wochentag = ?"
             " AND gueltig_ab <= ? AND gueltig_bis >= ? ORDER BY von",
-            (filiale, datum.weekday(), iso, iso),
+            (filiale, wochentag, iso, iso),
         ).fetchall()
         return [(v, b) for v, b in zeilen]
 
