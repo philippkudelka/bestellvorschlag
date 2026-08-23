@@ -4,7 +4,7 @@
 - [x] M1 — Kanonisches Datenmodell und Ablage (SQLite)
 - [x] M2 — Simulator: Welt mit bekannter Wahrheit, B.I.T.-ähnlicher Export
 - [x] M3 — Import und Datenqualitätsbericht
-- [ ] M4 — Zensierungskorrektur (Tagesverlaufskurve, Ausverkaufserkennung)
+- [x] M4 — Zensierungskorrektur (Tagesverlaufskurve, Ausverkaufserkennung)
 - [ ] M5 — Merkmale und Quantilmodelle (kein Blick in die Zukunft)
 - [ ] M6 — Servicegrad und Vorschlag mit Begründung
 - [ ] M7 — Rückrechnung (Backtest, vier Verfahren, Fehler gegen die Wahrheit)

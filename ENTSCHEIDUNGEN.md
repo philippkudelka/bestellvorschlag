@@ -7,6 +7,23 @@ Jede Zeile: getroffene Annahme oder Verkürzung, mit einem Satz Begründung.
 - **Python 3.12 über `uv`** statt Systempython: das System hat nur 3.9, der
   Auftrag verlangt 3.11+, und `uv` installiert reproduzierbar ohne Adminrechte.
 
+## M4
+
+- **Stundenumsatz als zusätzliche Exportdatei (letzte 56 Tage)**: aus reinen
+  Tagessummen lässt sich keine Tagesverlaufskurve schätzen; echte
+  Warenwirtschaften bieten Stundenstatistiken meist nur für kurze Zeiträume,
+  genau das bildet der Simulator ab. Fehlen Stundendaten, fällt die Schätzung
+  auf Warengruppen- und Standardverläufe zurück — der echte B.I.T.-Anschluss
+  funktioniert also auch ohne.
+- **Kurvenschätzung nur aus Tagen mit Retoure > 0**: wer Retoure hatte, war
+  bis Ladenschluss lieferfähig — der Tagesverlauf ist dann unzensiert.
+- **`nachfrage` ist eine abgeleitete Tabelle** und wird bei jedem Lauf für
+  den Zeitraum neu berechnet (Kurven verbessern sich mit mehr Daten);
+  Rohdaten bleiben unangetastet.
+- **Gemessener Nachweis** (Simulationswahrheit, 5 Monate, seed 42): Erkennung
+  99 % der zensierten Tage, mittlerer Fehler 4.32 → 1.87 Stück, Verbesserung
+  56.6 %. Untergrenze 45 % steht im Test.
+
 ## M2
 
 - **Tagesdateien statt Monatsdateien** für den Export: die Spaltenliste des

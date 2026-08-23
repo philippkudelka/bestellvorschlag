@@ -54,8 +54,38 @@ def importiere_synthetisch(
             "synthetisch", pfad.name, stat["gelesen"], uebernommen, stat["verworfen"])
         neu += 1
 
+    neu += _importiere_stunden(ablage, verzeichnis, schon)
     _importiere_begleitdateien(ablage, verzeichnis)
     return {"dateien_neu": neu, "dateien_gesamt": len(dateien)}
+
+
+def _importiere_stunden(ablage: Ablage, verzeichnis: Path, schon: set[str]) -> int:
+    """Stundenumsatz-Dateien (soweit vorhanden) in verkauf_stunde laden."""
+    neu = 0
+    for pfad in sorted(Path(verzeichnis).glob("stunden_*.csv")):
+        if pfad.name in schon:
+            continue
+        roh = pfad.stem.split("_")[1]
+        datum = f"{roh[:4]}-{roh[4:6]}-{roh[6:]}"
+        zeilen = []
+        gelesen = 0
+        verworfen = 0
+        with open(pfad, encoding="cp1252") as f:
+            inhalt = f.read().splitlines()
+        for zeile in inhalt:
+            if not zeile.strip() or not zeile[0].isdigit():
+                continue
+            gelesen += 1
+            teile = zeile.split(";")
+            if len(teile) < 4:
+                verworfen += 1
+                continue
+            zeilen.append({"datum": datum, "filiale": int(teile[0]), "artikel": teile[1],
+                           "stunde": int(teile[2]), "menge": float(teile[3])})
+        n = ablage.schreibe("verkauf_stunde", pd.DataFrame(zeilen)) if zeilen else 0
+        ablage.protokolliere_import("synthetisch", pfad.name, gelesen, n, verworfen)
+        neu += 1
+    return neu
 
 
 def _ergaenze_unbekannte_artikel(ablage: Ablage, df: pd.DataFrame) -> None:

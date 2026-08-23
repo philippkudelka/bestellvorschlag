@@ -116,6 +116,18 @@ CREATE TABLE IF NOT EXISTS bestellung (
     UNIQUE (liefertag, filiale, artikel)
 );
 
+-- Stundenumsatz, soweit das Fremdsystem ihn hergibt (oft nur fuer kurze
+-- Zeitraeume abrufbar). Grundlage der geschaetzten Tagesverlaufskurve;
+-- fehlt er, faellt die Schaetzung auf Standardverlaeufe je Warengruppe zurueck.
+CREATE TABLE IF NOT EXISTS verkauf_stunde (
+    datum   TEXT NOT NULL,
+    filiale INTEGER NOT NULL,
+    artikel TEXT NOT NULL,
+    stunde  INTEGER NOT NULL,   -- 0-23
+    menge   REAL NOT NULL,
+    UNIQUE (datum, filiale, artikel, stunde)
+);
+
 CREATE TABLE IF NOT EXISTS import_lauf (
     id                 INTEGER PRIMARY KEY AUTOINCREMENT,
     zeitpunkt          TEXT NOT NULL,

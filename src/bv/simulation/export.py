@@ -89,6 +89,8 @@ def schreibe_exporte(welt: Welt, verzeichnis: str | Path, seed: int = 7) -> dict
             f.write("\n".join(zeilen_out))
             f.write("\n")
 
+    _schreibe_stundenumsatz(welt, verz, rng)
+
     # saubere Begleitdateien
     welt.wetter.to_csv(verz / "wetter.csv", index=False)
     welt.ereignisse.to_csv(verz / "ereignisse.csv", index=False)
@@ -105,3 +107,81 @@ def schreibe_exporte(welt: Welt, verzeichnis: str | Path, seed: int = 7) -> dict
     with open(verz / "fehler_protokoll.json", "w", encoding="utf-8") as f:
         json.dump(protokoll, f, indent=2, ensure_ascii=False)
     return protokoll
+
+
+# Wie viele Tage Stundenstatistik das Fremdsystem hergibt (rueckwirkend)
+STUNDEN_TAGE = 56
+
+
+def _schreibe_stundenumsatz(welt: Welt, verz: Path, rng: np.random.Generator) -> None:
+    """Stundenumsatz-Dateien fuer die letzten STUNDEN_TAGE Tage.
+
+    Der Tagesverkauf wird entlang der wahren Kurve multinomial auf die
+    Stunden verteilt; bei Ausverkauf endet die Verteilung an der
+    Ausverkaufsminute. Format wie die Tagesdateien: Kopfzeile mit Datum,
+    dann Fil.;Art.Nr;Std;Menge."""
+    from bv.simulation.welt import KURVEN, kumulierter_anteil, oeffnungsintervalle
+
+    tage = welt.tage
+    alle_daten = sorted(tage["datum"].unique())
+    ab = alle_daten[-STUNDEN_TAGE] if len(alle_daten) > STUNDEN_TAGE else alle_daten[0]
+    filiale_konfig = {f["nummer"]: f for f in welt.filialen}
+
+    from datetime import date as _date
+
+    for iso, tag_df in tage[tage["datum"] >= ab].groupby("datum", sort=True):
+        tag = _date.fromisoformat(iso)
+        zeilen_out: list[str] = []
+        intervalle_cache: dict[int, list[tuple[int, int]]] = {}
+        for z in tag_df.itertuples(index=False):
+            if z.verkauf <= 0:
+                continue
+            fil = int(z.filiale)
+            if fil not in intervalle_cache:
+                intervalle_cache[fil] = oeffnungsintervalle(filiale_konfig[fil], tag)
+            intervalle = intervalle_cache[fil]
+            if not intervalle:
+                continue
+            kurve = KURVEN[z.kurve]
+            gesamt = sum(b - v for v, b in intervalle)
+            ende_minute = (_minuten_aus_hhmm(z.letzter_verkauf)
+                           if isinstance(z.letzter_verkauf, str) else intervalle[-1][1])
+
+            def _pos(minute: int) -> float:
+                vergangen = sum(max(0, min(minute, b) - v) for v, b in intervalle)
+                return vergangen / gesamt
+
+            # kumulierter Verkaufsanteil an jeder Stundengrenze; bei Ausverkauf
+            # endet der Verkauf an ende_minute, danach bleibt der Anteil konstant
+            deckel = max(float(kumulierter_anteil(kurve, _pos(ende_minute))), 1e-9)
+            stunden: list[int] = []
+            kum: list[float] = []
+            for v, b in intervalle:
+                for h in range(v // 60, (b - 1) // 60 + 1):
+                    grenze = min(b, (h + 1) * 60, ende_minute)
+                    anteil = float(kumulierter_anteil(kurve, _pos(grenze))) / deckel
+                    if stunden and stunden[-1] == h:
+                        kum[-1] = max(kum[-1], anteil)
+                    else:
+                        stunden.append(h)
+                        kum.append(anteil)
+            kum_arr = np.maximum.accumulate(np.clip(np.array(kum), 0, 1))
+            gewichte = np.diff(np.concatenate([[0.0], kum_arr]))
+            if gewichte.sum() <= 0:
+                continue
+            mengen = rng.multinomial(int(z.verkauf), gewichte / gewichte.sum())
+            for h, m in zip(stunden, mengen):
+                if m > 0:
+                    zeilen_out.append(f"{fil};{z.artikel};{h};{m}")
+        datei = verz / f"stunden_{iso.replace('-', '')}.csv"
+        with open(datei, "w", encoding="cp1252", newline="\r\n") as f:
+            f.write("B.I.T. 64 Stundenumsatz je Artikel und Filiale\n")
+            f.write(f"Datum: {_datum_de(iso)};;;\n\n")
+            f.write("Fil.;Art.Nr;Std;Menge\n")
+            f.write("\n".join(zeilen_out))
+            f.write("\n")
+
+
+def _minuten_aus_hhmm(hhmm: str) -> int:
+    h, m = hhmm.split(":")
+    return int(h) * 60 + int(m)
