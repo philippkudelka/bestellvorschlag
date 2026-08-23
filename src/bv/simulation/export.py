@@ -48,7 +48,9 @@ def schreibe_exporte(welt: Welt, verzeichnis: str | Path, seed: int = 7) -> dict
     alle_daten = sorted(tage["datum"].unique())
 
     # ein paar fehlende Tage (nicht am Rand, damit der Rueckblick nicht leidet)
-    fehlend = sorted(rng.choice(alle_daten[30:-30], size=3, replace=False).tolist())
+    kandidaten = alle_daten[30:-30]
+    fehlend = (sorted(rng.choice(kandidaten, size=min(3, len(kandidaten)),
+                                 replace=False).tolist()) if kandidaten else [])
 
     bezeichnung = {a["nummer"]: a["bezeichnung"] for a in welt.artikel}
     doppelte = 0

@@ -69,11 +69,13 @@ def test_rueckfall_ohne_modell(system):
     konfig, ablage = system
     stat = erzeuge_vorschlaege(ablage, konfig, LIEFERTAG, modell_abschalten=True)
     assert stat["anzahl"] > 0
-    assert stat["rueckfall"] == stat["anzahl"]
+    assert stat["rueckfall"] > 0
     df = ablage.lese(
         "SELECT * FROM vorschlag WHERE liefertag = ? AND modellstand = 'rueckfall'",
         (LIEFERTAG,))
-    assert len(df) == stat["anzahl"]
+    # alle Modellzeilen sind Rueckfall; Mehrtagesartikel gehen den eigenen
+    # Bestandsrechenweg (modellstand 'bestandsrechnung')
+    assert len(df) == stat["rueckfall"]
     assert df["begruendung"].str.contains("Notbehelf").all()
 
 

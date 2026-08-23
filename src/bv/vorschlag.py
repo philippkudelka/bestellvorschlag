@@ -18,7 +18,7 @@ from bv.ablage import Ablage, jetzt
 from bv.konfiguration import Konfiguration
 from bv.merkmale import baue_merkmale
 from bv.modell import lade_neuesten_stand
-from bv.servicegrad import einstellungen_je_filiale_artikel
+from bv.servicegrad import einstellungen_je_filiale_artikel, newsvendor_quantil
 
 WOCHENTAGE = ["Montag", "Dienstag", "Mittwoch", "Donnerstag",
               "Freitag", "Samstag", "Sonntag"]
@@ -45,13 +45,30 @@ def erzeuge_vorschlaege(
         for q in sorted(merkmale["quantil"].unique()):
             vorhersagen[q] = stand.vorhersage(merkmale, q)
 
+    # Kuer: betriebswirtschaftliche Vergleichsmenge (Newsvendor-Quantil,
+    # auf das naechste trainierte Quantil gerundet) — nur zweite Spalte,
+    # nie die Vorgabe.
+    trainierte = sorted(konfig.quantile)
+    stammdaten = ablage.lese("SELECT nummer, preis, herstellkosten FROM artikel")
+    newsvendor_je_artikel: dict[str, float] = {}
+    for a in stammdaten.itertuples(index=False):
+        q_nv = newsvendor_quantil(a.preis, a.herstellkosten)
+        if q_nv is not None:
+            newsvendor_je_artikel[a.nummer] = min(
+                trainierte, key=lambda t: abs(t - q_nv))
+    if stand is not None:
+        for q in sorted(set(newsvendor_je_artikel.values())):
+            if q not in vorhersagen:
+                vorhersagen[q] = stand.vorhersage(merkmale, q)
+
     kontext = _kontext_vorwoche(ablage, konfig, liefertag)
     schwelle = float(konfig.einstellungen.get("vorschlag", {})
                      .get("auffaellig_abweichung_prozent", 25)) / 100.0
     hohe_retoure = float(konfig.einstellungen.get("vorschlag", {})
                          .get("hohe_retoure_prozent", 30)) / 100.0
 
-    zeitstempel = jetzt().isoformat(timespec="seconds")
+    # Mikrosekunden, damit zwei Laeufe nie denselben Stempel teilen
+    zeitstempel = jetzt().isoformat(timespec="microseconds")
     zeilen = []
     n_rueckfall = 0
     for i, z in enumerate(merkmale.itertuples(index=False)):
@@ -74,19 +91,88 @@ def erzeuge_vorschlaege(
             begruendung = _begruendung(z, vw, menge)
             modellstand = stand.name
             auffaellig = _ist_auffaellig(menge, vw, schwelle, hohe_retoure)
+        wirtschaftlich = None
+        q_nv = newsvendor_je_artikel.get(z.artikel)
+        if stand is not None and q_nv is not None:
+            wert = vorhersagen[q_nv][i]
+            if not np.isnan(wert):
+                wirtschaftlich = float(round(wert))
         zeilen.append({
             "erstellt_am": zeitstempel, "liefertag": liefertag,
             "filiale": int(z.filiale), "artikel": z.artikel,
             "menge": float(round(menge)), "quantil": float(z.quantil),
             "begruendung": begruendung, "modellstand": modellstand,
             "auffaellig": int(auffaellig),
+            "menge_wirtschaftlich": wirtschaftlich,
         })
 
+    zeilen += _mehrtages_vorschlaege(ablage, konfig, liefertag, zeitstempel)
     df = pd.DataFrame(zeilen)
     ablage.schreibe("vorschlag", df)
     return {"anzahl": len(df), "filialen": df["filiale"].nunique(),
             "modellstand": "rueckfall" if stand is None else stand.name,
             "rueckfall": n_rueckfall}
+
+
+def _mehrtages_vorschlaege(
+    ablage: Ablage, konfig: Konfiguration, liefertag: str, zeitstempel: str
+) -> list[dict]:
+    """Kuer: eigener Rechenweg fuer Mehrtagesartikel (Kuchen, zwei
+    Verkaufstage). Statt einer Tagesmenge wird ein Zielbestand angepeilt und
+    der Uebertrag vom Vortag abgezogen:
+
+        uebertrag  = max(0, Lieferung(T-1) - Verkauf(T-1))   je Filiale/Artikel
+        zielbestand = Mittel der letzten vier gleichen Wochentage des
+                      Verkaufs x Aufschlag je Servicegrad (A +25 %, B +15 %, C +5 %)
+        vorschlag  = max(0, zielbestand - uebertrag)
+
+    Bewusst einfach: die Artikel liegen ausserhalb des Modellumfangs, und die
+    Warenwirtschaft kann Retouren heute nicht rueckdatieren."""
+    aufschlag = {"A": 1.25, "B": 1.15, "C": 1.05}
+    tag = date.fromisoformat(liefertag)
+    wochentage = [(tag - timedelta(days=7 * i)).isoformat() for i in range(1, 5)]
+    vortag = (tag - timedelta(days=1)).isoformat()
+
+    artikel = ablage.lese(
+        "SELECT nummer FROM artikel WHERE mehrtagesartikel = 1")["nummer"].tolist()
+    if not artikel:
+        return []
+    platzhalter = ",".join("?" * len(artikel))
+    historie = ablage.lese(
+        f"""SELECT datum, filiale, artikel, menge FROM verkauf
+            WHERE artikel IN ({platzhalter}) AND datum IN (?,?,?,?)""",
+        (*artikel, *wochentage))
+    vortagswerte = ablage.lese(
+        f"""SELECT l.filiale, l.artikel, l.menge AS geliefert,
+                   COALESCE(v.menge, 0) AS verkauft
+            FROM lieferung l LEFT JOIN verkauf v
+              ON v.datum = l.datum AND v.filiale = l.filiale AND v.artikel = l.artikel
+            WHERE l.datum = ? AND l.artikel IN ({platzhalter})""",
+        (vortag, *artikel))
+    uebertrag = {(int(z.filiale), z.artikel): max(0.0, z.geliefert - z.verkauft)
+                 for z in vortagswerte.itertuples(index=False)}
+    servicegrade = einstellungen_je_filiale_artikel(ablage, konfig, liefertag)
+    sg = dict(zip(zip(servicegrade["filiale"], servicegrade["artikel"]),
+                  servicegrade["servicegrad"]))
+
+    zeilen = []
+    for (fil, art), gruppe in historie.groupby(["filiale", "artikel"]):
+        fil = int(fil)
+        if not ablage.oeffnung(fil, liefertag):
+            continue
+        zielbestand = gruppe["menge"].mean() * aufschlag.get(sg.get((fil, art), "C"), 1.05)
+        rest = uebertrag.get((fil, art), 0.0)
+        menge = max(0.0, round(zielbestand - rest))
+        zeilen.append({
+            "erstellt_am": zeitstempel, "liefertag": liefertag,
+            "filiale": fil, "artikel": art, "menge": float(menge),
+            "quantil": 0.5,
+            "begruendung": (f"Mehrtagesartikel: Zielbestand {zielbestand:.0f}"
+                            f" abzueglich {rest:.0f} Uebertrag vom Vortag"),
+            "modellstand": "bestandsrechnung", "auffaellig": 0,
+            "menge_wirtschaftlich": None,
+        })
+    return zeilen
 
 
 def _kontext_vorwoche(ablage: Ablage, konfig: Konfiguration, liefertag: str) -> dict:

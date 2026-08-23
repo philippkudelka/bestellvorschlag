@@ -33,6 +33,15 @@ class Ablage:
         self.verbindung = sqlite3.connect(self.pfad)
         self.verbindung.execute("PRAGMA journal_mode=WAL")
         self.verbindung.executescript(SCHEMA)
+        self._ergaenze_spalten()
+
+    def _ergaenze_spalten(self) -> None:
+        """Kleine Vorwaertsmigrationen fuer bestehende Datenbanken."""
+        vorhanden = {z[1] for z in self.verbindung.execute("PRAGMA table_info(vorschlag)")}
+        if "menge_wirtschaftlich" not in vorhanden:
+            self.verbindung.execute(
+                "ALTER TABLE vorschlag ADD COLUMN menge_wirtschaftlich REAL")
+            self.verbindung.commit()
 
     def schliessen(self) -> None:
         self.verbindung.close()

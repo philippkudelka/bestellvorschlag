@@ -49,7 +49,9 @@ def test_modell_abgeschaltet_rueckfall_fuer_alle_filialen(system):
     konfig, ablage = system
     stat = erzeuge_vorschlaege(ablage, konfig, LIEFERTAG, modell_abschalten=True)
     assert stat["filialen"] == 10, "auch ohne Modell: alle offenen Filialen versorgt"
-    df = ablage.lese("SELECT * FROM vorschlag WHERE liefertag = ?", (LIEFERTAG,))
+    df = ablage.lese(
+        "SELECT * FROM vorschlag WHERE liefertag = ? AND modellstand != 'bestandsrechnung'",
+        (LIEFERTAG,))
     assert (df["modellstand"] == "rueckfall").all()
     assert df["begruendung"].str.contains("Notbehelf").all()
     assert (df["menge"] >= 0).all()

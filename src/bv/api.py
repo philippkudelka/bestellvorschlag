@@ -131,7 +131,7 @@ def vorschlag(filiale: int, liefertag: str | None = None):
         liefertag = liefertag or _standard_liefertag(ab)
         df = ab.lese(
             """SELECT v.artikel, a.bezeichnung, a.warengruppe, v.menge, v.quantil,
-                      v.begruendung, v.auffaellig, v.modellstand
+                      v.begruendung, v.auffaellig, v.modellstand, v.menge_wirtschaftlich
                FROM vorschlag v JOIN artikel a ON a.nummer = v.artikel
                WHERE v.liefertag = ? AND v.filiale = ? AND v.erstellt_am =
                  (SELECT MAX(erstellt_am) FROM vorschlag WHERE liefertag = ?)
@@ -169,6 +169,8 @@ def vorschlag(filiale: int, liefertag: str | None = None):
                 "artikel": z.artikel, "bezeichnung": z.bezeichnung,
                 "warengruppe": z.warengruppe,
                 "vorschlag": z.menge, "quantil": z.quantil,
+                "menge_wirtschaftlich": (None if pd.isna(z.menge_wirtschaftlich)
+                                         else float(z.menge_wirtschaftlich)),
                 "servicegrad": sg.get(z.artikel),
                 "begruendung": z.begruendung, "auffaellig": int(z.auffaellig),
                 "notbehelf": z.modellstand == "rueckfall",

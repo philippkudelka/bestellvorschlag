@@ -81,6 +81,11 @@ def trainiere(ablage: Ablage, konfig: Konfiguration, stichtag: date) -> str:
         raise ValueError(f"Keine Nachfragedaten zwischen {von} und {bis}")
     daten = baue_merkmale(ablage, konfig, tage, mit_ziel=True)
     daten = daten.dropna(subset=["ziel"])
+    # Kuer: Ausreisserdaempfung — einzelne extreme Tage (Streik, Stromausfall,
+    # Kassenfehler) werden gedeckelt statt gelernt: hoechstens das Dreifache
+    # des 28-Tage-Mittels (sofern vorhanden).
+    deckel = 3.0 * daten["mittel_28"].fillna(np.inf)
+    daten["ziel"] = np.minimum(daten["ziel"], deckel.clip(lower=1.0))
 
     backend = konfig.modell_backend
     einstellungen = konfig.einstellungen.get("modell", {})

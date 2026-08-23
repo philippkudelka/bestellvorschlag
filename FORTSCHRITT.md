@@ -13,8 +13,8 @@
 
 ## Kür (nur wenn M0–M9 grün)
 
-- [ ] Mehrtagesartikel
-- [ ] Deckungsbeitragsspalte
-- [ ] Aktionen und Angebote
-- [ ] Ausreißerbehandlung beim Lernen
-- [ ] Zuordnungsvorschlag für echte B.I.T.-Datei
+- [x] Mehrtagesartikel (vereinfachter Bestandsrechenweg mit Übertrag)
+- [x] Deckungsbeitragsspalte (Newsvendor-Menge als Vergleichsspalte)
+- [ ] Aktionen und Angebote (teilweise: Ereignis-Wirkung als Merkmal vorhanden, kein Artikel-Angebotsmerkmal)
+- [x] Ausreißerbehandlung beim Lernen (Deckel bei 3× 28-Tage-Mittel)
+- [x] Zuordnungsvorschlag für echte B.I.T.-Datei (skripte/bit_zuordnung.py)

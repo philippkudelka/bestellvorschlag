@@ -129,7 +129,7 @@ async function ladeBestellung() {
   const rumpf = el("bestellung-tabelle").querySelector("tbody");
   rumpf.innerHTML = "";
   if (!daten.positionen.length) {
-    rumpf.innerHTML = `<tr><td colspan="6" class="leer">
+    rumpf.innerHTML = `<tr><td colspan="7" class="leer">
       Für diesen Tag liegen keine Vorschläge vor — Nachtlauf prüfen.</td></tr>`;
   }
   for (const p of daten.positionen) {
@@ -141,6 +141,7 @@ async function ladeBestellung() {
       <td>${p.artikel}</td>
       <td><strong>${p.bezeichnung}</strong>${begruendung}</td>
       <td class="zahl vorschlagszahl">${zahl(p.vorschlag)}</td>
+      <td class="zahl">${zahl(p.menge_wirtschaftlich)}</td>
       <td class="zahl">${zahl(p.vorwoche_geliefert)}</td>
       <td class="zahl">${zahl(p.vorwoche_retoure)}</td>
       <td class="zahl"><input class="menge" type="number" min="0" step="1"

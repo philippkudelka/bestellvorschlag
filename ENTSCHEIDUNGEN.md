@@ -7,6 +7,27 @@ Jede Zeile: getroffene Annahme oder Verkürzung, mit einem Satz Begründung.
 - **Python 3.12 über `uv`** statt Systempython: das System hat nur 3.9, der
   Auftrag verlangt 3.11+, und `uv` installiert reproduzierbar ohne Adminrechte.
 
+## Kür
+
+- **Mehrtagesartikel als eigener Bestandsrechenweg ohne Modell**: Zielbestand
+  aus dem Wochentagsmittel × Servicegrad-Aufschlag, abzüglich Übertrag vom
+  Vortag; die Artikel liegen außerhalb des Modellumfangs, ein eigenes Modell
+  lohnt erst mit echten (rückdatierbaren) Retourendaten.
+- **Newsvendor-Menge auf das nächste trainierte Quantil gerundet** statt
+  eines eigenen Modells je Artikelquantil: nur Vergleichsspalte, dafür keine
+  zusätzliche Trainingslast. Quantilüberkreuzungen (0.8er-Wert vereinzelt
+  über 0.95er-Wert) sind bei getrennten Quantilmodellen möglich und werden
+  nicht korrigiert.
+- **Ausreißerdämpfung als Deckel bei 3× 28-Tage-Mittel** statt aufwendiger
+  Ausreißererkennung: einfach, robust, und greift genau bei einzelnen
+  Extremtagen.
+- **„Aktionen und Angebote" nur teilweise**: die Ereignis-Wirkung fließt als
+  Merkmal ein; ein artikelgenaues Angebotsmerkmal mit gelerntem Hebel fehlt —
+  die Simulation kennt keine artikelgenauen Aktionen, es gäbe nichts zu lernen.
+- **Vorschlagsversionen**: jeder Lauf schreibt mit eigenem `erstellt_am`
+  (Mikrosekunden); Leser (API, Wächter) nehmen stets den neuesten Stand je
+  Liefertag — alte Stände bleiben nachvollziehbar erhalten.
+
 ## M4
 
 - **Stundenumsatz als zusätzliche Exportdatei (letzte 56 Tage)**: aus reinen

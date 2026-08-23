@@ -104,6 +104,7 @@ CREATE TABLE IF NOT EXISTS vorschlag (
     begruendung TEXT NOT NULL,
     modellstand TEXT NOT NULL,       -- Verzeichnisname des Modellstands oder 'rueckfall'
     auffaellig  INTEGER NOT NULL DEFAULT 0,
+    menge_wirtschaftlich REAL,       -- Newsvendor-Vergleichsmenge (Kuer, optional)
     UNIQUE (liefertag, filiale, artikel, erstellt_am)
 );
 
