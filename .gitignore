@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+daten/
+modelle/
+protokoll/
+berichte/*.csv
+*.sqlite
+*.db
+.DS_Store
