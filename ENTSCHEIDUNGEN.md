@@ -7,6 +7,16 @@ Jede Zeile: getroffene Annahme oder Verkürzung, mit einem Satz Begründung.
 - **Python 3.12 über `uv`** statt Systempython: das System hat nur 3.9, der
   Auftrag verlangt 3.11+, und `uv` installiert reproduzierbar ohne Adminrechte.
 
+## Feld-Erklärungen (2026-08-24, auf Wunsch des Betreibers)
+
+- **Tooltips (`title`) auf allen Spaltenköpfen und Bedienelementen** plus eine
+  eigene **Hilfe-Ansicht** mit denselben Texten: Die Gestaltungsregel „nichts,
+  was nur beim Überfahren mit der Maus erscheint" bleibt gewahrt, weil jede
+  Erklärung auch ohne Maus über die Hilfe-Ansicht erreichbar ist; die
+  gepunktete Unterstreichung markiert Spalten mit Tooltip.
+- **Die Vorschlagszahl trägt die Begründung als Tooltip** — damit ist die
+  Begründung am PC für jede Zeile erreichbar, nicht nur für auffällige.
+
 ## Umstellung auf Bäckerei Anders (2026-08-24, auf Wunsch des Betreibers)
 
 - **Filialen = die neun echten Anders-Filialen** mit Adressen, Telefonnummern

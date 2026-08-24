@@ -57,6 +57,13 @@ function lade() {
 
 /* ---------- Tagesuebersicht ----------------------------------------- */
 
+const ZUSTAND_ERKLAERUNG = {
+  "fertig": "Vorschläge liegen vor und warten auf Übernahme",
+  "bestellt": "Bestellung wurde für diesen Liefertag bestätigt",
+  "kein Vorschlag": "Für diesen Tag liegen keine Vorschläge vor — Nachtlauf prüfen",
+  "geschlossen": "Die Filiale hat an diesem Tag geschlossen",
+};
+
 async function ladeUebersicht() {
   const q = zustand.liefertag ? `?liefertag=${zustand.liefertag}` : "";
   const daten = await api(`/api/tagesuebersicht${q}`);
@@ -81,8 +88,9 @@ async function ladeUebersicht() {
     zeile.innerHTML = `
       <td><strong>${f.name}</strong><span class="begruendung">${f.anschrift}</span></td>
       <td>${f.oeffnung}</td>
-      <td><span class="marke ${marke}">${f.zustand}</span></td>
-      <td class="zahl">${f.auffaellig > 0
+      <td><span class="marke ${marke}"
+        title="${ZUSTAND_ERKLAERUNG[f.zustand] || ""}">${f.zustand}</span></td>
+      <td class="zahl" title="Artikel mit starker Abweichung zur Vorwoche, erkanntem Ausverkauf oder hoher Retoure">${f.auffaellig > 0
         ? `<span class="marke warn">${f.auffaellig}</span>` : "0"}</td>
       <td class="zahl">${f.retourenquote_vorwoche === null
         ? "–" : zahl(f.retourenquote_vorwoche, 1) + " %"}</td>
@@ -140,11 +148,12 @@ async function ladeBestellung() {
     zeile.innerHTML = `
       <td>${p.artikel}</td>
       <td><strong>${p.bezeichnung}</strong>${begruendung}</td>
-      <td class="zahl vorschlagszahl">${zahl(p.vorschlag)}</td>
-      <td class="zahl">${zahl(p.menge_wirtschaftlich)}</td>
+      <td class="zahl vorschlagszahl" title="${(p.begruendung || "").replaceAll('"', "'")}">${zahl(p.vorschlag)}</td>
+      <td class="zahl" title="Newsvendor-Vergleichswert — nur zur Orientierung">${zahl(p.menge_wirtschaftlich)}</td>
       <td class="zahl">${zahl(p.vorwoche_geliefert)}</td>
       <td class="zahl">${zahl(p.vorwoche_retoure)}</td>
       <td class="zahl"><input class="menge" type="number" min="0" step="1"
+        title="Tatsächlich bestellte Menge — vorbelegt mit dem Vorschlag"
         data-artikel="${p.artikel}" data-vorschlag="${p.vorschlag}"
         value="${p.bestellt ?? p.vorschlag}"></td>`;
     rumpf.appendChild(zeile);
@@ -189,6 +198,9 @@ async function ladeServicegrade() {
         <span class="begruendung">${a.warengruppe}</span></td>
       <td><span class="sg-wahl">
         ${["A", "B", "C"].map((k) => `<button data-klasse="${k}"
+          title="${{A: "Darf auf keinen Fall ausgehen — 95 % Sicherheit, mehr Retoure",
+                    B: "Darf am späten Nachmittag ausgehen — 80 %",
+                    C: "Darf mittags weg sein — 60 %, wenig Retoure"}[k]}"
           class="${k === a.servicegrad ? "aktiv" : ""}">${k}</button>`).join("")}
       </span></td>
       <td class="zahl vorschlagszahl" data-menge>${menge == null ? "–" : zahl(menge)}</td>`;

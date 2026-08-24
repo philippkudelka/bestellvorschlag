@@ -289,3 +289,16 @@ input.menge.geaendert { border-color: var(--akzent); border-width: 2px; }
 }
 
 .leer { color: var(--tinte-leise); padding: 24px; text-align: center; }
+
+/* Felderklaerungen: gepunktete Linie = hier gibt es einen Maus-Tooltip */
+th[title] { cursor: help; text-decoration: underline dotted; text-underline-offset: 3px; }
+td.vorschlagszahl[title] { cursor: help; }
+
+.hilfe-titel { font-size: 1.05rem; margin: 22px 0 10px; color: var(--dunkelblau); }
+
+table.hilfe td:first-child {
+  width: 240px;
+  font-weight: 600;
+  color: var(--dunkelblau);
+  vertical-align: top;
+}
