@@ -15,178 +15,215 @@
   </div>
 
   <header>
-    <div class="marke-kopf">Bäckerei Anders<small>Bestellvorschlag · Heufeldmühle</small></div>
-    <nav>
-      <button data-ansicht="uebersicht" class="aktiv">Tagesübersicht</button>
-      <button data-ansicht="bestellung">Bestellvorschlag</button>
-      <button data-ansicht="servicegrade">Servicegrade</button>
-      <button data-ansicht="ereignisse">Ereignisse</button>
-      <button data-ansicht="hilfe">Hilfe</button>
-    </nav>
-    <div id="kopf-rechts">
-      <label for="liefertag">Liefertag</label>
-      <input type="date" id="liefertag">
+    <div class="nav-inhalt">
+      <div class="marke-kopf">Bäckerei Anders</div>
+      <nav>
+        <button data-ansicht="uebersicht" class="aktiv">Tagesübersicht</button>
+        <button data-ansicht="bestellung">Bestellvorschlag</button>
+        <button data-ansicht="servicegrade">Servicegrade</button>
+        <button data-ansicht="ereignisse">Ereignisse</button>
+        <button data-ansicht="hilfe">Hilfe</button>
+      </nav>
+      <div id="kopf-rechts">
+        <label for="liefertag">Liefertag</label>
+        <input type="date" id="liefertag">
+      </div>
     </div>
   </header>
 
   <main>
     <section id="ansicht-uebersicht" class="ansicht">
-      <div id="warnung-kasten" hidden></div>
-      <h1>Wo heute genauer hinschauen?</h1>
-      <table id="uebersicht-tabelle">
-        <thead>
-          <tr>
-            <th title="Verkaufsstelle mit Anschrift">Filiale</th>
-            <th title="Öffnungszeit der Filiale am gewählten Liefertag">Öffnungszeit</th>
-            <th title="fertig = Vorschläge liegen vor · bestellt = Bestellung wurde bestätigt · kein Vorschlag = Nachtlauf prüfen · geschlossen = Filiale hat an diesem Tag zu">Zustand</th>
-            <th class="zahl" title="Anzahl Artikel, bei denen der Vorschlag stark von der Vorwoche abweicht, letzte Woche ein Ausverkauf erkannt wurde oder die Retoure hoch war — hier zuerst hinschauen">Auffällige Positionen</th>
-            <th class="zahl" title="Zurückgegangene Ware der letzten 7 Tage in Prozent der gelieferten Menge">Retourenquote Vorwoche</th><th></th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div class="hero">
+        <h1>Wo heute genauer hinschauen?</h1>
+        <p class="subline" id="uebersicht-subline"></p>
+      </div>
+      <div class="statreihe" id="statreihe"></div>
+      <div class="warnband" id="warnung-kasten" hidden>
+        <div class="inhalt">
+          <div class="titel">Nachtlauf auffällig</div>
+          <div class="text" id="warnung-text"></div>
+        </div>
+      </div>
+      <div class="tabellenbereich">
+        <div class="tabellen-scroll">
+          <table id="uebersicht-tabelle">
+            <thead>
+              <tr>
+                <th title="Verkaufsstelle mit Anschrift">Filiale</th>
+                <th title="Öffnungszeit der Filiale am gewählten Liefertag">Öffnungszeit</th>
+                <th title="fertig = Vorschläge liegen vor · bestellt = Bestellung bestätigt · kein Vorschlag = Nachtlauf prüfen · geschlossen = Filiale hat zu">Zustand</th>
+                <th class="zahl" title="Artikel mit starker Abweichung zur Vorwoche, erkanntem Ausverkauf oder hoher Retoure — hier zuerst hinschauen">Auffällige Positionen</th>
+                <th class="zahl" title="Zurückgegangene Ware der letzten 7 Tage in Prozent der gelieferten Menge">Retourenquote Vorwoche</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
     </section>
 
     <section id="ansicht-bestellung" class="ansicht" hidden>
-      <div class="filialwahl" id="bestellung-filialwahl"></div>
-      <div id="bestellung-kopf"></div>
-      <table id="bestellung-tabelle">
-        <thead>
-          <tr>
-            <th title="Artikelnummer aus der Warenwirtschaft">Art.-Nr.</th>
-            <th title="Artikel; bei auffälligen (gelb markierten) Zeilen steht darunter die Begründung des Vorschlags">Bezeichnung</th>
-            <th class="zahl" title="Vom System errechnete Bestellmenge für den Liefertag, gewählt nach dem eingestellten Servicegrad (A/B/C). Mauszeiger auf der Zahl zeigt die Begründung.">Vorschlag</th>
-            <th class="zahl" title="Vergleichswert: die Menge mit dem besten Verhältnis aus entgangenem Verkauf und Retourekosten (je höher die Spanne des Artikels, desto großzügiger). Nur zur Orientierung, nie die Vorgabe.">wirtschaftlich<br>günstigste Menge</th>
-            <th class="zahl" title="Geliefert am gleichen Wochentag vor einer Woche">Vorwoche geliefert</th>
-            <th class="zahl" title="Zurückgegangen am gleichen Wochentag vor einer Woche">Vorwoche Retoure</th>
-            <th class="zahl" title="Vorbelegt mit dem Vorschlag — hier eintragen, was tatsächlich bestellt wird, dann unten bestätigen">Bestellmenge</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <div class="fussleiste">
-        <span id="bestellung-hinweis">Vorschlag prüfen, Mengen ggf. anpassen,
-          in die Warenwirtschaft übertragen — dann bestätigen.</span>
-        <button id="bestellung-uebernehmen" class="haupt">Bestellung übernommen</button>
+      <div class="hero">
+        <h1 id="bestellung-titel"></h1>
+        <p class="subline" id="bestellung-subline"></p>
+      </div>
+      <div class="chipzeile" id="bestellung-filialwahl"></div>
+      <div class="tabellenbereich">
+        <div class="filterzeile" id="bestellung-filter"></div>
+        <div class="tabellen-scroll">
+          <table id="bestellung-tabelle">
+            <thead>
+              <tr>
+                <th title="Artikel mit Nummer; darunter die Begründung des Vorschlags bzw. die Warengruppe">Artikel</th>
+                <th class="zahl" title="Vom System errechnete Bestellmenge, gewählt nach dem eingestellten Servicegrad">Vorschlag</th>
+                <th class="zahl" title="Vergleichswert: Menge mit dem besten Verhältnis aus entgangenem Verkauf und Retourekosten. Nur zur Orientierung.">Wirtschaftl. Menge</th>
+                <th class="zahl" title="Geliefert am gleichen Wochentag vor einer Woche">Vorwoche geliefert</th>
+                <th class="zahl" title="Zurückgegangen am gleichen Wochentag vor einer Woche">Vorwoche Retoure</th>
+                <th class="zahl" title="Vorbelegt mit dem Vorschlag — hier eintragen, was tatsächlich bestellt wird">Bestellmenge</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="fussleiste">
+          <span id="bestellung-hinweis">Vorschlag prüfen, Mengen ggf. anpassen, in die
+            Warenwirtschaft übertragen — dann bestätigen. Es wird nie automatisch bestellt.</span>
+          <button id="bestellung-uebernehmen" class="haupt">Bestellung übernommen</button>
+        </div>
       </div>
     </section>
 
     <section id="ansicht-servicegrade" class="ansicht" hidden>
-      <div class="filialwahl" id="servicegrade-filialwahl"></div>
-      <h1>Servicegrade einstellen</h1>
-      <p class="erklaerung">A = darf nicht ausgehen · B = darf am späten
-        Nachmittag ausgehen · C = darf mittags weg sein.
-        Die Mengenspalte zeigt sofort, was die Wahl bedeutet.</p>
-      <table id="servicegrade-tabelle">
-        <thead>
-          <tr><th title="Artikelnummer aus der Warenwirtschaft">Art.-Nr.</th>
-            <th title="Artikel mit Warengruppe">Bezeichnung</th>
-            <th title="A = darf auf keinen Fall ausgehen (95 % Sicherheit) · B = darf am späten Nachmittag ausgehen (80 %) · C = darf mittags weg sein (60 %)">Servicegrad</th>
-            <th class="zahl" title="Menge, die das System bei dieser Klasse vorschlagen würde — ändert sich sofort beim Umschalten">Menge bei dieser Wahl</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div class="hero">
+        <h1>Servicegrade einstellen.</h1>
+        <p class="subline">A = darf nicht ausgehen · B = darf am späten Nachmittag ausgehen ·
+          C = darf mittags weg sein. Die Mengenspalte zeigt sofort, was die Wahl bedeutet.</p>
+      </div>
+      <div class="chipzeile" id="servicegrade-filialwahl"></div>
+      <div class="tabellenbereich schmal">
+        <div class="tabellen-scroll">
+          <table id="servicegrade-tabelle">
+            <thead>
+              <tr>
+                <th>Artikel</th>
+                <th title="A = 95 % Sicherheit · B = 80 % · C = 60 %">Servicegrad</th>
+                <th class="zahl" title="Menge, die das System bei dieser Klasse vorschlagen würde — ändert sich sofort beim Umschalten">Menge bei dieser Wahl</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
     </section>
 
     <section id="ansicht-ereignisse" class="ansicht" hidden>
-      <h1>Ereigniskalender</h1>
-      <form id="ereignis-formular">
-        <div class="feld"><label>Von</label><input type="date" name="datum_von" required
-          title="Erster Tag, an dem das Ereignis wirkt"></div>
-        <div class="feld"><label>Bis</label><input type="date" name="datum_bis" required
-          title="Letzter Tag (einschließlich)"></div>
-        <div class="feld"><label>Filialen</label>
-          <input type="text" name="filialen" value="alle"
-          title="Betroffene Filialen: alle — oder Nummern mit Komma, z. B. 3,7"></div>
-        <div class="feld breit"><label>Was ist los?</label>
-          <input type="text" name="bezeichnung" placeholder="z. B. Dorffest Bruckmühl" required></div>
-        <div class="feld"><label>Erwartete Wirkung</label>
-          <select name="wirkung">
-            <option value="1.2">mehr Verkauf (+20 %)</option>
-            <option value="1.5">viel mehr Verkauf (+50 %)</option>
-            <option value="0.7">weniger Verkauf (−30 %)</option>
-            <option value="0.5">viel weniger Verkauf (−50 %)</option>
-          </select></div>
-        <button type="submit" class="haupt">Eintragen</button>
-      </form>
-      <table id="ereignis-tabelle">
-        <thead>
-          <tr><th>Von</th><th>Bis</th>
-            <th title="alle — oder Filialnummern mit Komma">Filialen</th>
-            <th>Bezeichnung</th>
-            <th class="zahl" title="Erwartete Auswirkung auf den Verkauf; fließt in die Vorschläge der betroffenen Tage ein">Wirkung</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div class="hero">
+        <h1>Ereigniskalender.</h1>
+        <p class="subline">Dorffest, Sperrung, Aktion — was die Nachfrage bewegt,
+          gehört hier hinein und fließt in die Vorschläge ein.</p>
+      </div>
+      <div class="tabellenbereich schmal">
+        <form id="ereignis-formular">
+          <div class="feld"><label>Von</label>
+            <input type="date" name="datum_von" required title="Erster Tag, an dem das Ereignis wirkt"></div>
+          <div class="feld"><label>Bis</label>
+            <input type="date" name="datum_bis" required title="Letzter Tag (einschließlich)"></div>
+          <div class="feld"><label>Filialen</label>
+            <input type="text" name="filialen" value="alle"
+              title="Betroffene Filialen: alle — oder Nummern mit Komma, z. B. 3,7"></div>
+          <div class="feld breit"><label>Was ist los?</label>
+            <input type="text" name="bezeichnung" placeholder="z. B. Dorffest Bruckmühl" required></div>
+          <div class="feld"><label>Erwartete Wirkung</label>
+            <select name="wirkung">
+              <option value="1.2">mehr Verkauf (+20 %)</option>
+              <option value="1.5">viel mehr Verkauf (+50 %)</option>
+              <option value="0.7">weniger Verkauf (−30 %)</option>
+              <option value="0.5">viel weniger Verkauf (−50 %)</option>
+            </select></div>
+          <button type="submit" class="haupt">Eintragen</button>
+        </form>
+        <div class="tabellen-scroll">
+          <table id="ereignis-tabelle">
+            <thead>
+              <tr><th>Von</th><th>Bis</th>
+                <th title="alle — oder Filialnummern mit Komma">Filialen</th>
+                <th>Bezeichnung</th><th>Art</th>
+                <th class="zahl" title="Erwartete Auswirkung auf den Verkauf; fließt in die Vorschläge der betroffenen Tage ein">Wirkung</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
     </section>
+
     <section id="ansicht-hilfe" class="ansicht" hidden>
-      <h1>Was bedeutet welches Feld?</h1>
-      <p class="erklaerung">Am PC erscheinen dieselben Erklärungen, wenn man mit
-        dem Mauszeiger über eine Spaltenüberschrift oder eine Vorschlagszahl fährt.</p>
-
-      <h2 class="hilfe-titel">Tagesübersicht</h2>
-      <table class="hilfe">
-        <tbody>
-          <tr><td>Zustand</td><td><strong>fertig</strong> = Vorschläge liegen vor ·
-            <strong>bestellt</strong> = Bestellung wurde bestätigt ·
+      <div class="hero">
+        <h1>Was bedeutet welches Feld?</h1>
+        <p class="subline">Am PC erscheinen dieselben Erklärungen, wenn man mit dem
+          Mauszeiger über eine Spaltenüberschrift fährt.</p>
+      </div>
+      <div class="hilfe-bereich">
+        <h2>Tagesübersicht</h2>
+        <dl>
+          <div class="definition"><dt>Zustand</dt><dd><strong>fertig</strong> = Vorschläge
+            liegen vor · <strong>bestellt</strong> = Bestellung wurde bestätigt ·
             <strong>kein Vorschlag</strong> = Nachtlauf prüfen ·
-            <strong>geschlossen</strong> = Filiale hat an diesem Tag zu.</td></tr>
-          <tr><td>Auffällige Positionen</td><td>Artikel, bei denen der Vorschlag stark
-            von der Vorwoche abweicht, letzte Woche ein Ausverkauf erkannt wurde oder
-            die Retoure hoch war — dort zuerst hinschauen.</td></tr>
-          <tr><td>Retourenquote Vorwoche</td><td>Zurückgegangene Ware der letzten
-            7 Tage in Prozent der gelieferten Menge.</td></tr>
-        </tbody>
-      </table>
+            <strong>geschlossen</strong> = Filiale hat an diesem Tag zu.</dd></div>
+          <div class="definition"><dt>Auffällige Positionen</dt><dd>Artikel, bei denen der
+            Vorschlag stark von der Vorwoche abweicht, letzte Woche ein Ausverkauf erkannt
+            wurde oder die Retoure hoch war — dort zuerst hinschauen.</dd></div>
+          <div class="definition"><dt>Retourenquote Vorwoche</dt><dd>Zurückgegangene Ware
+            der letzten 7 Tage in Prozent der gelieferten Menge. Werte über 20 % erscheinen
+            rot.</dd></div>
+        </dl>
 
-      <h2 class="hilfe-titel">Bestellvorschlag</h2>
-      <table class="hilfe">
-        <tbody>
-          <tr><td>Vorschlag</td><td>Vom System errechnete Bestellmenge für den
-            Liefertag, gewählt nach dem eingestellten Servicegrad. Es wird
-            <strong>nie automatisch bestellt</strong> — ein Mensch überträgt die Menge
-            in die Warenwirtschaft und bestätigt unten.</td></tr>
-          <tr><td>Begründung</td><td>Steht bei auffälligen (gelb markierten) Zeilen
-            unter der Bezeichnung, z.&nbsp;B. „Letzten Sonntag um 10:42 ausverkauft —
-            deshalb mehr". Steht dort <strong>Notbehelf</strong>, war kein Modell
-            verfügbar und es wurde die Menge der Vorwoche übernommen.</td></tr>
-          <tr><td>wirtschaftlich günstigste Menge</td><td>Vergleichswert: die Menge
-            mit dem besten Verhältnis aus entgangenem Verkauf und Retourekosten —
-            je höher die Spanne des Artikels, desto großzügiger. Nur zur
-            Orientierung, nie die Vorgabe.</td></tr>
-          <tr><td>Vorwoche geliefert / Retoure</td><td>Geliefert bzw. zurückgegangen
-            am gleichen Wochentag vor einer Woche.</td></tr>
-          <tr><td>Bestellmenge</td><td>Vorbelegt mit dem Vorschlag; hier anpassen,
-            was tatsächlich bestellt wird. Ein blauer Rahmen zeigt: von Hand
-            geändert. „Bestellung übernommen" hält das Ergebnis fest.</td></tr>
-        </tbody>
-      </table>
+        <h2>Bestellvorschlag</h2>
+        <dl>
+          <div class="definition"><dt>Vorschlag</dt><dd>Vom System errechnete Bestellmenge
+            für den Liefertag, gewählt nach dem eingestellten Servicegrad. Es wird
+            <strong>nie automatisch bestellt</strong> — ein Mensch überträgt die Menge in
+            die Warenwirtschaft und bestätigt unten.</dd></div>
+          <div class="definition"><dt>Begründung</dt><dd>Steht unter dem Artikelnamen,
+            z. B. „Letzten Sonntag um 10:42 ausverkauft — deshalb mehr". Steht dort
+            <strong>Notbehelf</strong>, war kein Modell verfügbar und es wurde die Menge
+            der Vorwoche übernommen.</dd></div>
+          <div class="definition"><dt>Wirtschaftl. Menge</dt><dd>Vergleichswert: die Menge
+            mit dem besten Verhältnis aus entgangenem Verkauf und Retourekosten — je höher
+            die Spanne des Artikels, desto großzügiger. Nur zur Orientierung, nie die
+            Vorgabe.</dd></div>
+          <div class="definition"><dt>Vorwoche geliefert / Retoure</dt><dd>Geliefert bzw.
+            zurückgegangen am gleichen Wochentag vor einer Woche.</dd></div>
+          <div class="definition"><dt>Bestellmenge</dt><dd>Vorbelegt mit dem Vorschlag;
+            hier anpassen, was tatsächlich bestellt wird. Ein blauer Rahmen zeigt: von Hand
+            geändert. „Bestellung übernommen" hält das Ergebnis fest.</dd></div>
+        </dl>
 
-      <h2 class="hilfe-titel">Servicegrade</h2>
-      <table class="hilfe">
-        <tbody>
-          <tr><td>A</td><td>Darf auf keinen Fall ausgehen — das System plant mit
-            95&nbsp;% Sicherheit. Mehr Sicherheit heißt mehr Retoure.</td></tr>
-          <tr><td>B</td><td>Darf am späten Nachmittag ausgehen — 80&nbsp;%.</td></tr>
-          <tr><td>C</td><td>Darf mittags weg sein — 60&nbsp;%. Wenig Retoure,
-            dafür öfter leer.</td></tr>
-          <tr><td>Menge bei dieser Wahl</td><td>Zeigt sofort, welche Bestellmenge
-            die gewählte Klasse für diese Filiale bedeuten würde.</td></tr>
-        </tbody>
-      </table>
+        <h2>Servicegrade</h2>
+        <dl>
+          <div class="definition"><dt>A</dt><dd>Darf auf keinen Fall ausgehen — das System
+            plant mit 95 % Sicherheit. Mehr Sicherheit heißt mehr Retoure.</dd></div>
+          <div class="definition"><dt>B</dt><dd>Darf am späten Nachmittag ausgehen —
+            80 %.</dd></div>
+          <div class="definition"><dt>C</dt><dd>Darf mittags weg sein — 60 %. Wenig
+            Retoure, dafür öfter leer.</dd></div>
+          <div class="definition"><dt>Menge bei dieser Wahl</dt><dd>Zeigt sofort, welche
+            Bestellmenge die gewählte Klasse für diese Filiale bedeuten würde.</dd></div>
+        </dl>
 
-      <h2 class="hilfe-titel">Ereignisse</h2>
-      <table class="hilfe">
-        <tbody>
-          <tr><td>Wirkung</td><td>Erwartete Auswirkung auf den Verkauf (z.&nbsp;B.
-            Dorffest +50&nbsp;%, Straßensperrung −30&nbsp;%). Fließt in die
-            Vorschläge der betroffenen Tage ein.</td></tr>
-          <tr><td>Filialen</td><td><strong>alle</strong> — oder Filialnummern mit
-            Komma, z.&nbsp;B. <strong>3,7</strong>.</td></tr>
-        </tbody>
-      </table>
+        <h2>Ereignisse</h2>
+        <dl>
+          <div class="definition"><dt>Wirkung</dt><dd>Erwartete Auswirkung auf den Verkauf
+            (z. B. Dorffest +50 %, Straßensperrung −30 %). Fließt in die Vorschläge der
+            betroffenen Tage ein.</dd></div>
+          <div class="definition"><dt>Filialen</dt><dd><strong>alle</strong> — oder
+            Filialnummern mit Komma, z. B. <strong>3,7</strong>.</dd></div>
+        </dl>
+      </div>
     </section>
   </main>
+
+  <footer id="fusszeile">Bäckerei Anders · Bestellvorschlag</footer>
 
   <script src="demo_shim.js"></script>
   <script src="app.js"></script>
