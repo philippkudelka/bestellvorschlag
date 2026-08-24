@@ -84,20 +84,22 @@ Die Liste, an der es mit echten Daten zuerst scheitern könnte
 
 ## Kennzahlen der Rückrechnung (2026-01-01 bis 2026-06-30, gegen die wahre Nachfrage)
 
+Neu gerechnet am 2026-08-24 auf der Anders-Welt (9 Filialen, Anders-Sortiment, 140 s):
+
 | Verfahren | erreichter Servicegrad A / B / C | WAPE A / B / C | Retourenquote A / B / C |
 |---|---|---|---|
-| Modell (mit Korrektur) | **0.92 / 0.80 / 0.65** | 26.5 / 23.3 / 23.2 % | 20.4 / 17.1 / 13.7 % |
-| Modell ohne Zensierungskorrektur | 0.80 / 0.70 / 0.60 | 19.6 / 20.3 / 22.7 % | 14.8 / 13.5 / 12.0 % |
-| Inhaber-Verfahren (Mittel 3 Wochentage) | 0.45 / 0.46 / 0.47 | 16.9 / 21.3 / 25.9 % | 6.7 / 8.3 / 10.0 % |
-| simulierter Mensch | 0.76 / 0.75 / 0.74 | 20.4 / 24.6 / 29.2 % | 15.3 / 17.4 / 19.6 % |
-| Vorwoche | 0.74 / 0.73 / 0.73 | 22.4 / 26.5 / 30.7 % | 16.1 / 18.1 / 20.2 % |
+| Modell (mit Korrektur) | **0.91 / 0.80 / 0.65** | 27.0 / 23.5 / 22.8 % | 20.7 / 17.2 / 13.5 % |
+| Modell ohne Zensierungskorrektur | 0.79 / 0.70 / 0.60 | 19.7 / 20.5 / 22.5 % | 14.9 / 13.6 / 12.0 % |
+| Inhaber-Verfahren (Mittel 3 Wochentage) | 0.45 / 0.46 / 0.47 | 17.0 / 21.8 / 25.7 % | 6.8 / 8.4 / 10.0 % |
+| simulierter Mensch | 0.77 / 0.74 / 0.74 | 20.4 / 24.7 / 28.9 % | 15.3 / 17.4 / 19.5 % |
+| Vorwoche | 0.74 / 0.72 / 0.72 | 22.8 / 26.7 / 30.5 % | 16.4 / 18.2 / 20.1 % |
 
 Einordnung in einem Satz: Das Modell ist das einzige Verfahren, das die
 eingestellten Servicegrade tatsächlich trifft (Ziel 0.95/0.80/0.60, erreicht
-0.92/0.80/0.65) — es kauft das mit höherer Retoure, genau wie es die Klassen
+0.91/0.80/0.65) — es kauft das mit höherer Retoure, genau wie es die Klassen
 verlangen, während das reine Wochentagsmittel zwar wenig Retoure hat, aber
 an jedem zweiten Tag ausverkauft wäre; und ohne Zensierungskorrektur fällt
-Klasse A von 0.92 auf 0.80, weil das Modell die Ausverkäufe der
+Klasse A von 0.91 auf 0.79, weil das Modell die Ausverkäufe der
 Vergangenheit fortschreibt. Vollständige Tabellen: berichte/rueckrechnung.md.
 
 Wichtig: WAPE/Retourenquote des Modells sind KEIN Qualitätsmangel gegenüber
@@ -110,7 +112,7 @@ täglich), nicht Retourensenkung — die 10–12 % des Betriebs sind gewollt.
 1. `python skripte/bit_zuordnung.py <datei>` laufen lassen, Vorschlag prüfen,
    Zuordnung in `konfiguration/einstellungen.yaml` unter `bit_csv:` eintragen.
 2. Annahmen 1–4 an der Datei verifizieren (insbesondere: gibt es `letz. Ver`?).
-3. Echte Öffnungszeiten aller zehn Filialen erfassen — Pflicht, ohne sie ist
+3. Öffnungszeiten aller neun Filialen gegen die Wirklichkeit prüfen (von der Website übernommen, Stand 2026-08-24) — Pflicht, ohne sie ist
    die Zensierungskorrektur wertlos.
 4. `nachtlauf.py --nur-import` + Datenqualitätsbericht lesen; besonders den
    Abschnitt „Retoure = 0 bei hoher Liefermenge" (Verdacht fehlender Erfassung).

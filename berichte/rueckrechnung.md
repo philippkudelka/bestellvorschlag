@@ -1,6 +1,6 @@
 # Rückrechnung (Backtest)
 
-Zeitraum: 2026-01-01 bis 2026-06-30 — rollierender Ursprung, wöchentliches Neutraining, Laufzeit 152s.
+Zeitraum: 2026-01-01 bis 2026-06-30 — rollierender Ursprung, wöchentliches Neutraining, Laufzeit 140s.
 
 Alle Fehler gegen die **wahre Nachfrage** der Simulation (nur dort messbar); `mae_gegen_verkauf` zum Vergleich gegen den beobachteten Verkauf. `erreichter_servicegrad` = Anteil der Tage ohne Ausverkauf. WAPE statt MAPE, weil MAPE bei kleinen Mengen bricht.
 
@@ -8,38 +8,38 @@ Alle Fehler gegen die **wahre Nachfrage** der Simulation (nur dort messbar); `ma
 
 | verfahren             |   tage |   mae_stueck |   wape_prozent |   verzerrung_stueck |   erreichter_servicegrad |   retourenquote_prozent |   mae_gegen_verkauf |
 |:----------------------|-------:|-------------:|---------------:|--------------------:|-------------------------:|------------------------:|--------------------:|
-| inhaber_mittel3       |  12256 |        10.74 |          16.9  |               -2.58 |                     0.45 |                    6.69 |                8.97 |
-| modell                |  12256 |        16.87 |          26.55 |               15.35 |                     0.92 |                   20.42 |               17.58 |
-| modell_ohne_korrektur |  12256 |        12.45 |          19.6  |                9.05 |                     0.8  |                   14.81 |               11.86 |
-| simulierter_mensch    |  12256 |        12.94 |          20.37 |                9.33 |                     0.76 |                   15.28 |               11.14 |
-| vorwoche              |  12256 |        14.25 |          22.43 |                9.22 |                     0.74 |                   16.13 |               13.58 |
+| inhaber_mittel3       |  13338 |        11.14 |          16.96 |               -2.6  |                     0.45 |                    6.77 |                9.35 |
+| modell                |  13338 |        17.73 |          27    |               16.06 |                     0.91 |                   20.67 |               18.36 |
+| modell_ohne_korrektur |  13338 |        12.92 |          19.68 |                9.36 |                     0.79 |                   14.85 |               12.24 |
+| simulierter_mensch    |  13338 |        13.37 |          20.35 |                9.74 |                     0.77 |                   15.32 |               11.55 |
+| vorwoche              |  13338 |        14.98 |          22.8  |                9.71 |                     0.74 |                   16.37 |               14.3  |
 
 ## Servicegradklasse B
 
 | verfahren             |   tage |   mae_stueck |   wape_prozent |   verzerrung_stueck |   erreichter_servicegrad |   retourenquote_prozent |   mae_gegen_verkauf |
 |:----------------------|-------:|-------------:|---------------:|--------------------:|-------------------------:|------------------------:|--------------------:|
-| inhaber_mittel3       |  35236 |         5.72 |          21.3  |               -1.5  |                     0.46 |                    8.32 |                4.53 |
-| modell                |  35236 |         6.25 |          23.28 |                4.45 |                     0.8  |                   17.1  |                6.14 |
-| modell_ohne_korrektur |  35236 |         5.45 |          20.29 |                2.48 |                     0.7  |                   13.52 |                4.57 |
-| simulierter_mensch    |  35236 |         6.6  |          24.57 |                4.17 |                     0.75 |                   17.36 |                5.39 |
-| vorwoche              |  35236 |         7.11 |          26.5  |                4.11 |                     0.73 |                   18.13 |                6.55 |
+| inhaber_mittel3       |  37050 |         5.76 |          21.78 |               -1.57 |                     0.46 |                    8.43 |                4.52 |
+| modell                |  37050 |         6.23 |          23.54 |                4.41 |                     0.8  |                   17.22 |                6.1  |
+| modell_ohne_korrektur |  37050 |         5.43 |          20.51 |                2.39 |                     0.7  |                   13.55 |                4.48 |
+| simulierter_mensch    |  37050 |         6.55 |          24.74 |                4.04 |                     0.74 |                   17.35 |                5.29 |
+| vorwoche              |  37050 |         7.07 |          26.7  |                3.99 |                     0.72 |                   18.15 |                6.47 |
 
 ## Servicegradklasse C
 
 | verfahren             |   tage |   mae_stueck |   wape_prozent |   verzerrung_stueck |   erreichter_servicegrad |   retourenquote_prozent |   mae_gegen_verkauf |
 |:----------------------|-------:|-------------:|---------------:|--------------------:|-------------------------:|------------------------:|--------------------:|
-| inhaber_mittel3       |  30640 |         3.86 |          25.92 |               -1.1  |                     0.47 |                   10.01 |                2.92 |
-| modell                |  30640 |         3.44 |          23.16 |                0.85 |                     0.65 |                   13.66 |                2.84 |
-| modell_ohne_korrektur |  30640 |         3.37 |          22.67 |                0.25 |                     0.6  |                   11.98 |                2.52 |
-| simulierter_mensch    |  30640 |         4.34 |          29.21 |                2.46 |                     0.74 |                   19.63 |                3.4  |
-| vorwoche              |  30640 |         4.56 |          30.65 |                2.41 |                     0.73 |                   20.16 |                4.06 |
+| inhaber_mittel3       |  32604 |         3.97 |          25.67 |               -1.11 |                     0.47 |                    9.95 |                3.03 |
+| modell                |  32604 |         3.52 |          22.76 |                0.88 |                     0.65 |                   13.47 |                2.89 |
+| modell_ohne_korrektur |  32604 |         3.48 |          22.51 |                0.32 |                     0.6  |                   12.04 |                2.6  |
+| simulierter_mensch    |  32604 |         4.46 |          28.85 |                2.56 |                     0.74 |                   19.49 |                3.51 |
+| vorwoche              |  32604 |         4.72 |          30.53 |                2.52 |                     0.72 |                   20.13 |                4.22 |
 
 ## Wirkung der Zensierungskorrektur
 
 | Klasse | erreichter Servicegrad mit | ohne | WAPE mit | ohne |
 |---|---|---|---|---|
-| A | 0.918 | 0.797 | 26.5 % | 19.6 % |
-| B | 0.799 | 0.700 | 23.3 % | 20.3 % |
-| C | 0.654 | 0.603 | 23.2 % | 22.7 % |
+| A | 0.915 | 0.794 | 27.0 % | 19.7 % |
+| B | 0.796 | 0.697 | 23.5 % | 20.5 % |
+| C | 0.651 | 0.603 | 22.8 % | 22.5 % |
 
 Ohne Korrektur lernt das Modell die zensierten Verkäufe nach und schreibt Ausverkäufe fort — der erreichte Servicegrad fällt.
