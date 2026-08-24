@@ -18,7 +18,9 @@ _ENDE = "2027-12-31"
 
 def schreibe_stammdaten(ablage: Ablage, konfig: Konfiguration) -> None:
     ablage.schreibe("filiale", pd.DataFrame(
-        [{"nummer": f["nummer"], "name": f["name"], "ort": f["ort"]}
+        [{"nummer": f["nummer"], "name": f["name"], "ort": f["ort"],
+          "strasse": f.get("strasse"), "plz": f.get("plz"),
+          "telefon": f.get("telefon")}
          for f in konfig.filialen]))
 
     ablage.schreibe("oeffnungszeit", pd.DataFrame(_oeffnungszeiten(konfig.filialen)))

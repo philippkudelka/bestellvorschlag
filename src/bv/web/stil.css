@@ -1,17 +1,20 @@
 /* Tablet-Oberflaeche, Querformat ~1180x820, Bedienung mit dem Finger.
-   Ruhige, warme Neutraltoene; EINE Akzentfarbe (Petrol) — nur fuer den
-   Vorschlag und fuer Auffaelligkeiten. */
+   Markenfarben der Baeckerei Anders (baeckerei-anders.de):
+   Blau #1961ac (Akzent, Vorschlagszahl), Gold #fdc300 (Auffaelligkeiten),
+   Dunkelblau #0c3057 (Kopf und Schaltflaechen). */
 
 :root {
-  --papier: #f6f4f0;
+  --papier: #f5f6f8;
   --flaeche: #ffffff;
-  --linie: #e2ddd4;
-  --tinte: #2c2a26;
-  --tinte-leise: #6d675e;
-  --akzent: #0e6e66;
-  --akzent-hell: #e3efed;
-  --warnton: #9a4b12;
-  --warnton-hell: #f7e9dc;
+  --linie: #dde2e9;
+  --tinte: #1c2733;
+  --tinte-leise: #5d6b7a;
+  --dunkelblau: #0c3057;
+  --akzent: #1961ac;
+  --akzent-hell: #e6eef7;
+  --gold: #fdc300;
+  --warnton: #8a6a00;
+  --warnton-hell: #fdf3cc;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,12 +32,28 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 18px;
   padding: 12px 24px;
   background: var(--flaeche);
-  border-bottom: 1px solid var(--linie);
+  border-bottom: 3px solid var(--gold);
   position: sticky;
   top: 0;
   z-index: 5;
+}
+
+.marke-kopf {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dunkelblau);
+  white-space: nowrap;
+}
+
+.marke-kopf small {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--tinte-leise);
+  letter-spacing: 0.04em;
 }
 
 nav { display: flex; gap: 8px; }
@@ -51,9 +70,9 @@ nav button {
 }
 
 nav button.aktiv {
-  background: var(--tinte);
-  border-color: var(--tinte);
-  color: var(--papier);
+  background: var(--dunkelblau);
+  border-color: var(--dunkelblau);
+  color: #fff;
   font-weight: 600;
 }
 
@@ -107,7 +126,7 @@ td.vorschlagszahl {
   white-space: nowrap;
 }
 
-tr.auffaellig { background: var(--warnton-hell); }
+tr.auffaellig { background: var(--warnton-hell); box-shadow: inset 4px 0 0 var(--gold); }
 
 .begruendung {
   display: block;
@@ -137,7 +156,7 @@ button.haupt {
   font-size: 1.05rem;
   font-weight: 600;
   color: #fff;
-  background: var(--tinte);
+  background: var(--akzent);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -168,9 +187,9 @@ button.zeile {
 }
 
 .filialwahl button.aktiv {
-  background: var(--tinte);
-  color: var(--papier);
-  border-color: var(--tinte);
+  background: var(--dunkelblau);
+  color: #fff;
+  border-color: var(--dunkelblau);
   font-weight: 600;
 }
 
@@ -228,9 +247,9 @@ input.menge.geaendert { border-color: var(--akzent); border-width: 2px; }
 }
 
 .sg-wahl button.aktiv {
-  background: var(--tinte);
-  color: var(--papier);
-  border-color: var(--tinte);
+  background: var(--dunkelblau);
+  color: #fff;
+  border-color: var(--dunkelblau);
 }
 
 #warnung-kasten {

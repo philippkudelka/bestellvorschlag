@@ -51,15 +51,15 @@ def client(tmp_path_factory):
 def test_filialen(client):
     antwort = client.get("/api/filialen")
     assert antwort.status_code == 200
-    assert len(antwort.json()) == 10
+    assert len(antwort.json()) == 9
 
 
 def test_tagesuebersicht(client):
     daten = client.get(f"/api/tagesuebersicht?liefertag={LIEFERTAG}").json()
     assert daten["liefertag"] == LIEFERTAG
-    assert len(daten["filialen"]) == 10
+    assert len(daten["filialen"]) == 9
     fertige = [f for f in daten["filialen"] if f["zustand"] == "fertig"]
-    assert len(fertige) == 10  # Samstag, alle offen, alle mit Vorschlag
+    assert len(fertige) == 9  # Samstag: alle neun Filialen offen und versorgt
 
 
 def test_vorschlag_und_bestellung(client):

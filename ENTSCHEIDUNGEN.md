@@ -7,6 +7,29 @@ Jede Zeile: getroffene Annahme oder Verkürzung, mit einem Satz Begründung.
 - **Python 3.12 über `uv`** statt Systempython: das System hat nur 3.9, der
   Auftrag verlangt 3.11+, und `uv` installiert reproduzierbar ohne Adminrechte.
 
+## Umstellung auf Bäckerei Anders (2026-08-24, auf Wunsch des Betreibers)
+
+- **Filialen = die neun echten Anders-Filialen** mit Adressen, Telefonnummern
+  und Öffnungszeiten von baeckerei-anders.de/filialen (Stand 2026-08-24),
+  inklusive Götting mit Mittagspause und geschlossenem Dienstagnachmittag
+  sowie der REWE-Standorte mit Öffnung bis 20 Uhr.
+- **`grundniveau` und `trend` je Filiale sind Schätzungen**, keine echten
+  Umsatzzahlen; ebenso bleiben Umbau Wasserburg und Eröffnung REWE Aying
+  **synthetische Simulationsannahmen** (der Auftrag verlangt beide Fälle) —
+  im YAML ausdrücklich als SYNTHETISCH markiert.
+- **Artikel: echte Brotnamen der Website** (Mischbrot, Bauernbrot mit/ohne
+  Gewürz, Weizenkruste, Weißbierkruste, Joggingbrot, Low-Carb-Brot …);
+  Semmeln, Laugenbäckerei, Gebäck und Imbiss nach den Kategorietexten der
+  Website ergänzt. Preise/Herstellkosten geschätzt (Website nennt keine).
+  Warengruppen umbenannt: Brezen → Laugenbaeckerei, Snacks → Imbiss.
+- **Design auf die Anders-Markenfarben** umgestellt (aus dem Website-CSS:
+  Blau #1961ac, Gold #fdc300, Dunkelblau #0c3057); die frühere Regel „kein
+  Firmenname, keine Marke" ist damit vom Betreiber ausdrücklich aufgehoben.
+- **Schema erweitert** um filiale.strasse/plz/telefon (Vorwärtsmigration in
+  `Ablage._ergaenze_spalten`).
+- Alle Verkaufszahlen bleiben **simuliert** — die echten Filialdaten liefern
+  nur Rahmen (Öffnungszeiten, Namen, Sortiment), keine Nachfrage.
+
 ## Kür
 
 - **Mehrtagesartikel als eigener Bestandsrechenweg ohne Modell**: Zielbestand

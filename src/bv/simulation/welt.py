@@ -254,7 +254,7 @@ def erzeuge_welt(
     # Wochentagsfaktoren, je Warengruppe leicht unterschiedlich
     wt_basis = np.array([0.95, 0.90, 0.95, 1.00, 1.15, 1.40, 1.55])
     wt_je_artikel = np.array([
-        wt_basis * (1.10 if a["warengruppe"] in ("Semmeln", "Brezen", "Gebaeck") else 1.0)
+        wt_basis * (1.10 if a["warengruppe"] in ("Semmeln", "Laugenbaeckerei", "Gebaeck") else 1.0)
         for a in artikel
     ])
     # Wochenendaufschlag nur auf Sa/So wirken lassen, Werktage normalisieren
@@ -321,7 +321,7 @@ def erzeuge_welt(
                 continue
             offen_min = sum(b - v for v, b in intervalle)
             offen_faktor = 0.55 + 0.45 * min(offen_min / standard_minuten[fi], 1.0)
-            tourismus = 1.12 if (ferien and f["ort"] in ("Prien am Chiemsee", "Riedering")) else 1.0
+            tourismus = 1.12 if (ferien and f.get("tourismus")) else 1.0
 
             mu = (
                 grundmenge

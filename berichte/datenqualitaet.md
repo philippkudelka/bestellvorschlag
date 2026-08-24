@@ -1,6 +1,6 @@
 # Datenqualitätsbericht
 
-Erzeugt: 2026-08-23T22:21:01+02:00
+Erzeugt: 2026-08-24T19:00:54+02:00
 
 Datenzeitraum: 2023-08-28 bis 2026-08-22
 
@@ -20,7 +20,6 @@ Betroffene Kalendertage: 2025-07-01, 2025-09-01, 2026-05-26
 | 7 | 3 |
 | 8 | 3 |
 | 9 | 3 |
-| 10 | 3 |
 
 ## Retoure größer als Liefermenge
 Keine Fälle. ✓
@@ -42,6 +41,6 @@ Keine Auffälligkeiten. ✓
 ## Filialen mit Lücken (Eröffnung, Umbau)
 
 - Filiale 9: noch nicht eroeffnet (2023-01-01 bis 2025-02-28)
-- Filiale 6: Umbau (2024-10-07 bis 2024-10-20)
+- Filiale 7: Umbau (2024-10-07 bis 2024-10-20)
 
 Diese Zeiträume sind beim Lernen und im Rückblick ausgenommen.

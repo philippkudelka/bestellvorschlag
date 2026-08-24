@@ -44,7 +44,7 @@ def system(tmp_path_factory):
 def test_vorschlaege_fuer_alle_offenen_filialen(system):
     konfig, ablage = system
     stat = erzeuge_vorschlaege(ablage, konfig, LIEFERTAG)
-    assert stat["filialen"] == 10  # Samstag: alle offen
+    assert stat["filialen"] == 9  # Samstag: alle Anders-Filialen offen
     assert stat["rueckfall"] == 0
 
     df = ablage.lese(
@@ -61,7 +61,8 @@ def test_vorschlaege_fuer_alle_offenen_filialen(system):
 def test_sonntag_nur_offene_filialen(system):
     konfig, ablage = system
     stat = erzeuge_vorschlaege(ablage, konfig, "2026-05-31")  # Sonntag
-    assert stat["filialen"] == 4  # nur Filialen 1, 3, 6, 9 haben Sonntagsoeffnung
+    assert stat["filialen"] == 6  # Sonntagsoeffnung: Heufeldmuehle, Bad Aibling
+    # Bahnhof, Westerham, REWE Bruckmuehl, Wasserburg, Schechen
 
 
 def test_rueckfall_ohne_modell(system):

@@ -41,7 +41,11 @@ class Ablage:
         if "menge_wirtschaftlich" not in vorhanden:
             self.verbindung.execute(
                 "ALTER TABLE vorschlag ADD COLUMN menge_wirtschaftlich REAL")
-            self.verbindung.commit()
+        filiale_spalten = {z[1] for z in self.verbindung.execute("PRAGMA table_info(filiale)")}
+        for spalte in ("strasse", "plz", "telefon"):
+            if spalte not in filiale_spalten:
+                self.verbindung.execute(f"ALTER TABLE filiale ADD COLUMN {spalte} TEXT")
+        self.verbindung.commit()
 
     def schliessen(self) -> None:
         self.verbindung.close()

@@ -1,9 +1,11 @@
-# Artikelstammdaten (~80 Artikel).
+# Artikelstammdaten — Sortiment der Baeckerei Anders (Bruckmuehl).
+# Brotnamen von baeckerei-anders.de/produkte/brote; Semmeln, Laugen-
+# baeckerei, Gebaeck und Imbiss nach den Kategorienbeschreibungen der
+# Website ergaenzt. Preise und Herstellkosten sind GESCHAETZT.
 # nummer als Text mit fuehrenden Nullen — wie ein Warenwirtschaftsexport.
-# im_umfang: false = Teiglinge, Kuchen (mehrtagesartikel), Kleinstartikel —
-#   werden simuliert und importiert, aber nicht vorgeschlagen.
-# kurve: frueh (Semmeln), flach (Brot), mittag (Snacks), nachmittag (Gebaeck).
-# wetter: Empfindlichkeit je Grad Abweichung / je mm Regen (multiplikativ).
+# im_umfang: false = Teiglinge, Kuchen (mehrtagesartikel), Kleinstartikel.
+# kurve: frueh (Semmeln/Laugen), flach (Brot), mittag (Imbiss),
+#        nachmittag (Gebaeck).
 
 artikel:
 - nummer: '00101'
@@ -11,8 +13,8 @@ artikel:
   warengruppe: Semmeln
   im_umfang: true
   mehrtagesartikel: false
-  preis: 0.45
-  herstellkosten: 0.12
+  preis: 0.5
+  herstellkosten: 0.13
   servicegrad: A
   grundmenge: 160
   kurve: frueh
@@ -20,105 +22,105 @@ artikel:
     temperatur: 0.004
     regen: -0.1
 - nummer: '00102'
-  bezeichnung: Laugensemmel
+  bezeichnung: Koernersemmel
   warengruppe: Semmeln
   im_umfang: true
   mehrtagesartikel: false
-  preis: 0.75
-  herstellkosten: 0.22
+  preis: 0.9
+  herstellkosten: 0.3
   servicegrad: A
-  grundmenge: 60
+  grundmenge: 55
   kurve: frueh
   wetter:
     temperatur: 0.004
     regen: -0.1
 - nummer: '00103'
-  bezeichnung: Koernersemmel
-  warengruppe: Semmeln
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 0.85
-  herstellkosten: 0.28
-  servicegrad: B
-  grundmenge: 45
-  kurve: frueh
-  wetter:
-    temperatur: 0.004
-    regen: -0.1
-- nummer: '00104'
-  bezeichnung: Mohnsemmel
-  warengruppe: Semmeln
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 0.6
-  herstellkosten: 0.18
-  servicegrad: B
-  grundmenge: 40
-  kurve: frueh
-  wetter:
-    temperatur: 0.004
-    regen: -0.1
-- nummer: '00105'
-  bezeichnung: Sesamsemmel
-  warengruppe: Semmeln
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 0.6
-  herstellkosten: 0.18
-  servicegrad: B
-  grundmenge: 35
-  kurve: frueh
-  wetter:
-    temperatur: 0.004
-    regen: -0.1
-- nummer: '00106'
-  bezeichnung: Kuerbiskernsemmel
+  bezeichnung: Dinkelsemmel
   warengruppe: Semmeln
   im_umfang: true
   mehrtagesartikel: false
   preis: 0.95
   herstellkosten: 0.32
   servicegrad: B
+  grundmenge: 35
+  kurve: frueh
+  wetter:
+    temperatur: 0.004
+    regen: -0.1
+- nummer: '00104'
+  bezeichnung: Roggensemmel
+  warengruppe: Semmeln
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 0.75
+  herstellkosten: 0.24
+  servicegrad: B
   grundmenge: 30
+  kurve: frueh
+  wetter:
+    temperatur: 0.004
+    regen: -0.1
+- nummer: '00105'
+  bezeichnung: Kuemmelsemmel
+  warengruppe: Semmeln
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 0.65
+  herstellkosten: 0.2
+  servicegrad: C
+  grundmenge: 22
+  kurve: frueh
+  wetter:
+    temperatur: 0.004
+    regen: -0.1
+- nummer: '00106'
+  bezeichnung: Mohnsemmel
+  warengruppe: Semmeln
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 0.65
+  herstellkosten: 0.2
+  servicegrad: B
+  grundmenge: 38
   kurve: frueh
   wetter:
     temperatur: 0.004
     regen: -0.1
 - nummer: '00107'
-  bezeichnung: Dinkelsemmel
+  bezeichnung: Sesamsemmel
   warengruppe: Semmeln
   im_umfang: true
   mehrtagesartikel: false
-  preis: 0.9
-  herstellkosten: 0.3
+  preis: 0.65
+  herstellkosten: 0.2
+  servicegrad: B
+  grundmenge: 32
+  kurve: frueh
+  wetter:
+    temperatur: 0.004
+    regen: -0.1
+- nummer: 00108
+  bezeichnung: Brotzeitweckerl
+  warengruppe: Semmeln
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 0.85
+  herstellkosten: 0.28
   servicegrad: B
   grundmenge: 30
   kurve: frueh
   wetter:
     temperatur: 0.004
     regen: -0.1
-- nummer: 00108
-  bezeichnung: Roggensemmel
-  warengruppe: Semmeln
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 0.7
-  herstellkosten: 0.22
-  servicegrad: C
-  grundmenge: 25
-  kurve: frueh
-  wetter:
-    temperatur: 0.004
-    regen: -0.1
 - nummer: 00109
-  bezeichnung: Kaisersemmel
+  bezeichnung: Fitness-Weckerl
   warengruppe: Semmeln
   im_umfang: true
   mehrtagesartikel: false
-  preis: 0.5
-  herstellkosten: 0.14
+  preis: 1.0
+  herstellkosten: 0.34
   servicegrad: B
-  grundmenge: 50
+  grundmenge: 26
   kurve: frueh
   wetter:
     temperatur: 0.004
@@ -128,60 +130,60 @@ artikel:
   warengruppe: Semmeln
   im_umfang: true
   mehrtagesartikel: false
-  preis: 0.8
-  herstellkosten: 0.22
+  preis: 0.85
+  herstellkosten: 0.24
+  servicegrad: C
+  grundmenge: 18
+  kurve: frueh
+  wetter:
+    temperatur: 0.004
+    regen: -0.1
+- nummer: '00111'
+  bezeichnung: Salzstangerl
+  warengruppe: Semmeln
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 0.7
+  herstellkosten: 0.2
+  servicegrad: C
+  grundmenge: 24
+  kurve: frueh
+  wetter:
+    temperatur: 0.004
+    regen: -0.1
+- nummer: '00112'
+  bezeichnung: Vollkornsemmel
+  warengruppe: Semmeln
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 0.9
+  herstellkosten: 0.3
   servicegrad: C
   grundmenge: 20
   kurve: frueh
   wetter:
     temperatur: 0.004
     regen: -0.1
-- nummer: '00111'
-  bezeichnung: Vollkornsemmel
-  warengruppe: Semmeln
+- nummer: '00201'
+  bezeichnung: Brezn
+  warengruppe: Laugenbaeckerei
   im_umfang: true
   mehrtagesartikel: false
   preis: 0.85
-  herstellkosten: 0.28
-  servicegrad: C
-  grundmenge: 22
-  kurve: frueh
-  wetter:
-    temperatur: 0.004
-    regen: -0.1
-- nummer: '00112'
-  bezeichnung: Salzstangerl
-  warengruppe: Semmeln
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 0.65
-  herstellkosten: 0.18
-  servicegrad: C
-  grundmenge: 25
-  kurve: frueh
-  wetter:
-    temperatur: 0.004
-    regen: -0.1
-- nummer: '00201'
-  bezeichnung: Breze
-  warengruppe: Brezen
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 0.8
-  herstellkosten: 0.2
+  herstellkosten: 0.22
   servicegrad: A
-  grundmenge: 110
+  grundmenge: 120
   kurve: frueh
   wetter:
     temperatur: 0.006
     regen: -0.08
 - nummer: '00202'
-  bezeichnung: Laugenstange
-  warengruppe: Brezen
+  bezeichnung: Laugenweckerl
+  warengruppe: Laugenbaeckerei
   im_umfang: true
   mehrtagesartikel: false
-  preis: 0.85
-  herstellkosten: 0.24
+  preis: 0.9
+  herstellkosten: 0.26
   servicegrad: B
   grundmenge: 40
   kurve: frueh
@@ -189,116 +191,116 @@ artikel:
     temperatur: 0.006
     regen: -0.08
 - nummer: '00203'
-  bezeichnung: Laugenzopf
-  warengruppe: Brezen
+  bezeichnung: Laugenstange
+  warengruppe: Laugenbaeckerei
   im_umfang: true
   mehrtagesartikel: false
-  preis: 1.1
-  herstellkosten: 0.32
+  preis: 0.9
+  herstellkosten: 0.26
   servicegrad: B
-  grundmenge: 25
+  grundmenge: 35
   kurve: frueh
   wetter:
     temperatur: 0.006
     regen: -0.08
 - nummer: '00204'
-  bezeichnung: Kaesebreze
-  warengruppe: Brezen
+  bezeichnung: Butterbrezn
+  warengruppe: Laugenbaeckerei
   im_umfang: true
   mehrtagesartikel: false
   preis: 1.4
-  herstellkosten: 0.45
+  herstellkosten: 0.44
+  servicegrad: A
+  grundmenge: 50
+  kurve: frueh
+  wetter:
+    temperatur: 0.006
+    regen: -0.08
+- nummer: '00205'
+  bezeichnung: Kaesebrezn
+  warengruppe: Laugenbaeckerei
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 1.5
+  herstellkosten: 0.48
   servicegrad: B
   grundmenge: 30
   kurve: frueh
   wetter:
     temperatur: 0.006
     regen: -0.08
-- nummer: '00205'
-  bezeichnung: Butterbreze
-  warengruppe: Brezen
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 1.3
-  herstellkosten: 0.4
-  servicegrad: A
-  grundmenge: 45
-  kurve: frueh
-  wetter:
-    temperatur: 0.006
-    regen: -0.08
 - nummer: '00206'
-  bezeichnung: Laugenbrezn gross
-  warengruppe: Brezen
+  bezeichnung: Laugenzopf
+  warengruppe: Laugenbaeckerei
   im_umfang: true
   mehrtagesartikel: false
-  preis: 1.6
-  herstellkosten: 0.5
+  preis: 1.2
+  herstellkosten: 0.36
   servicegrad: C
-  grundmenge: 15
+  grundmenge: 20
   kurve: frueh
   wetter:
     temperatur: 0.006
     regen: -0.08
 - nummer: '00207'
   bezeichnung: Laugenknoten
-  warengruppe: Brezen
+  warengruppe: Laugenbaeckerei
   im_umfang: true
   mehrtagesartikel: false
-  preis: 0.95
-  herstellkosten: 0.28
+  preis: 1.0
+  herstellkosten: 0.3
   servicegrad: C
-  grundmenge: 18
+  grundmenge: 16
   kurve: frueh
   wetter:
     temperatur: 0.006
     regen: -0.08
 - nummer: '00301'
-  bezeichnung: Bauernbrot 1kg
+  bezeichnung: Mischbrot 750g
   warengruppe: Brot
   im_umfang: true
   mehrtagesartikel: false
-  preis: 4.2
-  herstellkosten: 1.3
+  preis: 3.6
+  herstellkosten: 1.1
   servicegrad: A
-  grundmenge: 30
+  grundmenge: 28
   kurve: flach
   wetter:
     temperatur: 0.0
     regen: -0.03
 - nummer: '00302'
-  bezeichnung: Bauernbrot 500g
+  bezeichnung: Bauernbrot mit Gewuerz
   warengruppe: Brot
   im_umfang: true
   mehrtagesartikel: false
-  preis: 2.6
-  herstellkosten: 0.8
+  preis: 4.3
+  herstellkosten: 1.35
   servicegrad: A
-  grundmenge: 25
+  grundmenge: 22
   kurve: flach
   wetter:
     temperatur: 0.0
     regen: -0.03
 - nummer: '00303'
-  bezeichnung: Roggenmischbrot
+  bezeichnung: Bauernbrot ohne Gewuerz
   warengruppe: Brot
   im_umfang: true
   mehrtagesartikel: false
-  preis: 3.8
-  herstellkosten: 1.2
+  preis: 4.3
+  herstellkosten: 1.35
   servicegrad: B
-  grundmenge: 20
+  grundmenge: 16
   kurve: flach
   wetter:
     temperatur: 0.0
     regen: -0.03
 - nummer: '00304'
-  bezeichnung: Dinkelvollkornbrot
+  bezeichnung: Sonnenblumenbrot
   warengruppe: Brot
   im_umfang: true
   mehrtagesartikel: false
-  preis: 4.9
-  herstellkosten: 1.7
+  preis: 4.6
+  herstellkosten: 1.55
   servicegrad: B
   grundmenge: 14
   kurve: flach
@@ -306,131 +308,196 @@ artikel:
     temperatur: 0.0
     regen: -0.03
 - nummer: '00305'
-  bezeichnung: Sonnenblumenbrot
+  bezeichnung: Krustenbrot 750g
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 4.2
+  herstellkosten: 1.35
+  servicegrad: A
+  grundmenge: 18
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: '00306'
+  bezeichnung: Weizenkruste
   warengruppe: Brot
   im_umfang: true
   mehrtagesartikel: false
   preis: 4.4
-  herstellkosten: 1.5
+  herstellkosten: 1.45
   servicegrad: B
   grundmenge: 12
   kurve: flach
   wetter:
     temperatur: 0.0
     regen: -0.03
-- nummer: '00306'
-  bezeichnung: Walnussbrot
-  warengruppe: Brot
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 5.5
-  herstellkosten: 2.0
-  servicegrad: C
-  grundmenge: 8
-  kurve: flach
-  wetter:
-    temperatur: 0.0
-    regen: -0.03
 - nummer: '00307'
-  bezeichnung: Baguette
+  bezeichnung: Weissbierkruste
   warengruppe: Brot
   im_umfang: true
   mehrtagesartikel: false
-  preis: 2.2
-  herstellkosten: 0.6
-  servicegrad: B
-  grundmenge: 18
-  kurve: flach
-  wetter:
-    temperatur: 0.0
-    regen: -0.03
-- nummer: 00308
-  bezeichnung: Ciabatta
-  warengruppe: Brot
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 2.6
-  herstellkosten: 0.75
-  servicegrad: C
-  grundmenge: 10
-  kurve: flach
-  wetter:
-    temperatur: 0.0
-    regen: -0.03
-- nummer: 00309
-  bezeichnung: Toastbrot
-  warengruppe: Brot
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 2.9
-  herstellkosten: 0.9
-  servicegrad: C
-  grundmenge: 10
-  kurve: flach
-  wetter:
-    temperatur: 0.0
-    regen: -0.03
-- nummer: '00310'
-  bezeichnung: Bergsteigerbrot
-  warengruppe: Brot
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 4.6
-  herstellkosten: 1.55
+  preis: 4.8
+  herstellkosten: 1.6
   servicegrad: C
   grundmenge: 9
   kurve: flach
   wetter:
     temperatur: 0.0
     regen: -0.03
-- nummer: '00311'
-  bezeichnung: Kartoffelbrot
+- nummer: 00308
+  bezeichnung: Joggingbrot
   warengruppe: Brot
   im_umfang: true
   mehrtagesartikel: false
-  preis: 4.3
-  herstellkosten: 1.45
-  servicegrad: C
-  grundmenge: 8
-  kurve: flach
-  wetter:
-    temperatur: 0.0
-    regen: -0.03
-- nummer: '00312'
-  bezeichnung: Zwiebelbrot
-  warengruppe: Brot
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 4.5
-  herstellkosten: 1.5
-  servicegrad: C
-  grundmenge: 7
-  kurve: flach
-  wetter:
-    temperatur: 0.0
-    regen: -0.03
-- nummer: '00313'
-  bezeichnung: Genetztes 750g
-  warengruppe: Brot
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 3.6
-  herstellkosten: 1.1
+  preis: 4.9
+  herstellkosten: 1.65
   servicegrad: B
-  grundmenge: 16
+  grundmenge: 11
   kurve: flach
   wetter:
     temperatur: 0.0
     regen: -0.03
-- nummer: '00314'
-  bezeichnung: Holzofenbrot
+- nummer: 00309
+  bezeichnung: Dinkel-Mischbrot 750g
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 4.9
+  herstellkosten: 1.7
+  servicegrad: B
+  grundmenge: 12
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: '00310'
+  bezeichnung: Dinkelbrot 750g
   warengruppe: Brot
   im_umfang: true
   mehrtagesartikel: false
   preis: 5.2
   herstellkosten: 1.8
   servicegrad: B
-  grundmenge: 12
+  grundmenge: 10
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: '00311'
+  bezeichnung: Dinkel-Ciabatta
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 2.9
+  herstellkosten: 0.9
+  servicegrad: C
+  grundmenge: 9
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: '00312'
+  bezeichnung: RUDI Ruchmehl-Ciabatta
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 3.2
+  herstellkosten: 1.0
+  servicegrad: C
+  grundmenge: 8
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: '00313'
+  bezeichnung: Roggenlaib
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 4.5
+  herstellkosten: 1.5
+  servicegrad: C
+  grundmenge: 8
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: '00314'
+  bezeichnung: Vollkorn-Kuerbis
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 4.9
+  herstellkosten: 1.65
+  servicegrad: C
+  grundmenge: 8
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: '00315'
+  bezeichnung: Unser Vollkorn
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 4.7
+  herstellkosten: 1.6
+  servicegrad: B
+  grundmenge: 10
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: '00316'
+  bezeichnung: Fruehlingsbrot 500g
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 3.9
+  herstellkosten: 1.3
+  servicegrad: C
+  grundmenge: 7
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: '00317'
+  bezeichnung: Low-Carb-Brot
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 5.9
+  herstellkosten: 2.1
+  servicegrad: C
+  grundmenge: 6
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: 00318
+  bezeichnung: Vollkornkracher
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 3.1
+  herstellkosten: 1.0
+  servicegrad: C
+  grundmenge: 9
+  kurve: flach
+  wetter:
+    temperatur: 0.0
+    regen: -0.03
+- nummer: 00319
+  bezeichnung: Baguette
+  warengruppe: Brot
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 2.4
+  herstellkosten: 0.7
+  servicegrad: B
+  grundmenge: 16
   kurve: flach
   wetter:
     temperatur: 0.0
@@ -440,8 +507,8 @@ artikel:
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 1.5
-  herstellkosten: 0.4
+  preis: 1.6
+  herstellkosten: 0.45
   servicegrad: A
   grundmenge: 40
   kurve: nachmittag
@@ -453,8 +520,8 @@ artikel:
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 1.8
-  herstellkosten: 0.55
+  preis: 1.9
+  herstellkosten: 0.58
   servicegrad: B
   grundmenge: 30
   kurve: nachmittag
@@ -466,8 +533,8 @@ artikel:
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 1.9
-  herstellkosten: 0.6
+  preis: 2.0
+  herstellkosten: 0.62
   servicegrad: B
   grundmenge: 22
   kurve: nachmittag
@@ -479,10 +546,10 @@ artikel:
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 2.1
-  herstellkosten: 0.65
+  preis: 2.2
+  herstellkosten: 0.68
   servicegrad: B
-  grundmenge: 24
+  grundmenge: 26
   kurve: nachmittag
   wetter:
     temperatur: -0.008
@@ -492,10 +559,10 @@ artikel:
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 1.9
-  herstellkosten: 0.6
+  preis: 2.0
+  herstellkosten: 0.62
   servicegrad: C
-  grundmenge: 18
+  grundmenge: 16
   kurve: nachmittag
   wetter:
     temperatur: -0.008
@@ -505,8 +572,8 @@ artikel:
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 1.9
-  herstellkosten: 0.6
+  preis: 2.0
+  herstellkosten: 0.62
   servicegrad: C
   grundmenge: 16
   kurve: nachmittag
@@ -518,10 +585,10 @@ artikel:
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 2.0
-  herstellkosten: 0.62
-  servicegrad: C
-  grundmenge: 14
+  preis: 2.2
+  herstellkosten: 0.68
+  servicegrad: B
+  grundmenge: 22
   kurve: nachmittag
   wetter:
     temperatur: -0.008
@@ -531,10 +598,10 @@ artikel:
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 2.0
-  herstellkosten: 0.62
-  servicegrad: B
-  grundmenge: 20
+  preis: 2.1
+  herstellkosten: 0.65
+  servicegrad: C
+  grundmenge: 18
   kurve: nachmittag
   wetter:
     temperatur: -0.008
@@ -544,8 +611,8 @@ artikel:
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 1.6
-  herstellkosten: 0.45
+  preis: 1.7
+  herstellkosten: 0.48
   servicegrad: B
   grundmenge: 35
   kurve: nachmittag
@@ -557,8 +624,8 @@ artikel:
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 2.2
-  herstellkosten: 0.7
+  preis: 2.3
+  herstellkosten: 0.72
   servicegrad: C
   grundmenge: 12
   kurve: nachmittag
@@ -566,38 +633,38 @@ artikel:
     temperatur: -0.008
     regen: 0.06
 - nummer: '00411'
-  bezeichnung: Franzbroetchen
-  warengruppe: Gebaeck
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 1.7
-  herstellkosten: 0.5
-  servicegrad: C
-  grundmenge: 15
-  kurve: nachmittag
-  wetter:
-    temperatur: -0.008
-    regen: 0.06
-- nummer: '00412'
   bezeichnung: Vanillehoernchen
   warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 2.1
-  herstellkosten: 0.65
+  preis: 2.2
+  herstellkosten: 0.68
   servicegrad: C
   grundmenge: 10
   kurve: nachmittag
   wetter:
     temperatur: -0.008
     regen: 0.06
-- nummer: '00501'
-  bezeichnung: Belegte Semmel Kaese
-  warengruppe: Snacks
+- nummer: '00412'
+  bezeichnung: Butterbroetchen suess
+  warengruppe: Gebaeck
   im_umfang: true
   mehrtagesartikel: false
-  preis: 2.9
-  herstellkosten: 1.1
+  preis: 1.8
+  herstellkosten: 0.55
+  servicegrad: C
+  grundmenge: 12
+  kurve: nachmittag
+  wetter:
+    temperatur: -0.008
+    regen: 0.06
+- nummer: '00501'
+  bezeichnung: Belegte Semmel Kaese
+  warengruppe: Imbiss
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 3.1
+  herstellkosten: 1.2
   servicegrad: B
   grundmenge: 20
   kurve: mittag
@@ -606,11 +673,11 @@ artikel:
     regen: -0.05
 - nummer: '00502'
   bezeichnung: Belegte Semmel Schinken
-  warengruppe: Snacks
+  warengruppe: Imbiss
   im_umfang: true
   mehrtagesartikel: false
-  preis: 3.2
-  herstellkosten: 1.3
+  preis: 3.4
+  herstellkosten: 1.4
   servicegrad: B
   grundmenge: 18
   kurve: mittag
@@ -618,51 +685,51 @@ artikel:
     temperatur: 0.005
     regen: -0.05
 - nummer: '00503'
-  bezeichnung: Leberkaessemmel
-  warengruppe: Snacks
+  bezeichnung: Belegtes Baguette
+  warengruppe: Imbiss
   im_umfang: true
   mehrtagesartikel: false
-  preis: 3.1
-  herstellkosten: 1.4
+  preis: 4.2
+  herstellkosten: 1.7
+  servicegrad: B
+  grundmenge: 14
+  kurve: mittag
+  wetter:
+    temperatur: 0.005
+    regen: -0.05
+- nummer: '00504'
+  bezeichnung: Leberkaessemmel
+  warengruppe: Imbiss
+  im_umfang: true
+  mehrtagesartikel: false
+  preis: 3.3
+  herstellkosten: 1.5
   servicegrad: A
   grundmenge: 30
   kurve: mittag
   wetter:
     temperatur: 0.005
     regen: -0.05
-- nummer: '00504'
-  bezeichnung: Pizzastange
-  warengruppe: Snacks
-  im_umfang: true
-  mehrtagesartikel: false
-  preis: 2.5
-  herstellkosten: 0.8
-  servicegrad: B
-  grundmenge: 22
-  kurve: mittag
-  wetter:
-    temperatur: 0.005
-    regen: -0.05
 - nummer: '00505'
-  bezeichnung: Kaesestange
-  warengruppe: Snacks
+  bezeichnung: Pizzastange
+  warengruppe: Imbiss
   im_umfang: true
   mehrtagesartikel: false
-  preis: 2.3
-  herstellkosten: 0.75
+  preis: 2.6
+  herstellkosten: 0.85
   servicegrad: C
-  grundmenge: 15
+  grundmenge: 18
   kurve: mittag
   wetter:
     temperatur: 0.005
     regen: -0.05
 - nummer: '00506'
   bezeichnung: Wurstsemmel
-  warengruppe: Snacks
+  warengruppe: Imbiss
   im_umfang: true
   mehrtagesartikel: false
-  preis: 3.0
-  herstellkosten: 1.25
+  preis: 3.2
+  herstellkosten: 1.35
   servicegrad: C
   grundmenge: 14
   kurve: mittag
@@ -674,8 +741,8 @@ artikel:
   warengruppe: Kuchen
   im_umfang: false
   mehrtagesartikel: true
-  preis: 2.4
-  herstellkosten: 0.8
+  preis: 2.6
+  herstellkosten: 0.85
   servicegrad: C
   grundmenge: 16
   kurve: flach
@@ -687,8 +754,8 @@ artikel:
   warengruppe: Kuchen
   im_umfang: false
   mehrtagesartikel: true
-  preis: 2.6
-  herstellkosten: 0.85
+  preis: 2.8
+  herstellkosten: 0.9
   servicegrad: C
   grundmenge: 14
   kurve: flach
@@ -700,8 +767,8 @@ artikel:
   warengruppe: Kuchen
   im_umfang: false
   mehrtagesartikel: true
-  preis: 2.8
-  herstellkosten: 0.95
+  preis: 3.0
+  herstellkosten: 1.0
   servicegrad: C
   grundmenge: 12
   kurve: flach
@@ -713,8 +780,8 @@ artikel:
   warengruppe: Kuchen
   im_umfang: false
   mehrtagesartikel: true
-  preis: 2.2
-  herstellkosten: 0.7
+  preis: 2.4
+  herstellkosten: 0.75
   servicegrad: C
   grundmenge: 10
   kurve: flach
@@ -726,8 +793,8 @@ artikel:
   warengruppe: Kuchen
   im_umfang: false
   mehrtagesartikel: true
-  preis: 2.9
-  herstellkosten: 1.0
+  preis: 3.1
+  herstellkosten: 1.05
   servicegrad: C
   grundmenge: 10
   kurve: flach
@@ -739,8 +806,8 @@ artikel:
   warengruppe: Kuchen
   im_umfang: false
   mehrtagesartikel: true
-  preis: 3.0
-  herstellkosten: 1.05
+  preis: 3.2
+  herstellkosten: 1.1
   servicegrad: C
   grundmenge: 9
   kurve: flach
@@ -752,8 +819,8 @@ artikel:
   warengruppe: Kuchen
   im_umfang: false
   mehrtagesartikel: true
-  preis: 2.5
-  herstellkosten: 0.85
+  preis: 2.7
+  herstellkosten: 0.9
   servicegrad: C
   grundmenge: 8
   kurve: flach
@@ -765,8 +832,8 @@ artikel:
   warengruppe: Kuchen
   im_umfang: false
   mehrtagesartikel: true
-  preis: 2.7
-  herstellkosten: 0.9
+  preis: 2.9
+  herstellkosten: 0.95
   servicegrad: C
   grundmenge: 8
   kurve: flach
@@ -778,8 +845,8 @@ artikel:
   warengruppe: Teiglinge
   im_umfang: false
   mehrtagesartikel: false
-  preis: 0.3
-  herstellkosten: 0.1
+  preis: 0.32
+  herstellkosten: 0.11
   servicegrad: C
   grundmenge: 100
   kurve: flach
@@ -787,12 +854,12 @@ artikel:
     temperatur: 0.0
     regen: 0.0
 - nummer: '00702'
-  bezeichnung: Aufback-Breze TK
+  bezeichnung: Aufback-Brezn TK
   warengruppe: Teiglinge
   im_umfang: false
   mehrtagesartikel: false
-  preis: 0.55
-  herstellkosten: 0.18
+  preis: 0.6
+  herstellkosten: 0.2
   servicegrad: C
   grundmenge: 60
   kurve: flach
@@ -804,8 +871,8 @@ artikel:
   warengruppe: Teiglinge
   im_umfang: false
   mehrtagesartikel: false
-  preis: 0.9
-  herstellkosten: 0.3
+  preis: 0.95
+  herstellkosten: 0.32
   servicegrad: C
   grundmenge: 40
   kurve: flach
@@ -817,8 +884,8 @@ artikel:
   warengruppe: Teiglinge
   im_umfang: false
   mehrtagesartikel: false
-  preis: 1.2
-  herstellkosten: 0.4
+  preis: 1.3
+  herstellkosten: 0.42
   servicegrad: C
   grundmenge: 20
   kurve: flach
@@ -830,8 +897,8 @@ artikel:
   warengruppe: Teiglinge
   im_umfang: false
   mehrtagesartikel: false
-  preis: 1.1
-  herstellkosten: 0.38
+  preis: 1.15
+  herstellkosten: 0.4
   servicegrad: C
   grundmenge: 20
   kurve: flach
@@ -843,8 +910,8 @@ artikel:
   warengruppe: Sonstiges
   im_umfang: false
   mehrtagesartikel: false
-  preis: 6.5
-  herstellkosten: 2.6
+  preis: 6.9
+  herstellkosten: 2.8
   servicegrad: C
   grundmenge: 2
   kurve: flach
@@ -856,8 +923,8 @@ artikel:
   warengruppe: Sonstiges
   im_umfang: false
   mehrtagesartikel: false
-  preis: 5.9
-  herstellkosten: 2.3
+  preis: 6.2
+  herstellkosten: 2.4
   servicegrad: C
   grundmenge: 2
   kurve: flach
@@ -869,8 +936,8 @@ artikel:
   warengruppe: Sonstiges
   im_umfang: false
   mehrtagesartikel: false
-  preis: 3.9
-  herstellkosten: 1.4
+  preis: 4.1
+  herstellkosten: 1.45
   servicegrad: C
   grundmenge: 3
   kurve: flach
@@ -882,8 +949,8 @@ artikel:
   warengruppe: Sonstiges
   im_umfang: false
   mehrtagesartikel: false
-  preis: 2.1
-  herstellkosten: 0.7
+  preis: 2.2
+  herstellkosten: 0.75
   servicegrad: C
   grundmenge: 2
   kurve: flach
@@ -891,12 +958,12 @@ artikel:
     temperatur: 0.0
     regen: 0.0
 - nummer: 00805
-  bezeichnung: Fastenbreze
+  bezeichnung: Fastenbrezn
   warengruppe: Sonstiges
   im_umfang: false
   mehrtagesartikel: false
-  preis: 1.2
-  herstellkosten: 0.4
+  preis: 1.3
+  herstellkosten: 0.42
   servicegrad: C
   grundmenge: 3
   kurve: flach

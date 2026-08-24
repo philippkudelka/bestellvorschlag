@@ -10,7 +10,10 @@ SCHEMA = """
 CREATE TABLE IF NOT EXISTS filiale (
     nummer      INTEGER PRIMARY KEY,
     name        TEXT NOT NULL,
-    ort         TEXT NOT NULL
+    ort         TEXT NOT NULL,
+    strasse     TEXT,
+    plz         TEXT,
+    telefon     TEXT
 );
 
 -- Oeffnungszeiten sind Pflichtdaten. Mehrere Zeitraeume je Tag moeglich

@@ -43,8 +43,8 @@ _STANDARD_FORMEN: dict[str, np.ndarray] = {
         + 0.8 * np.exp(-((_RASTER - 0.7) ** 2) / 0.04) + 0.25),
 }
 STANDARD_JE_WARENGRUPPE = {
-    "Semmeln": "frueh", "Brezen": "frueh", "Brot": "flach",
-    "Gebaeck": "nachmittag", "Snacks": "mittag",
+    "Semmeln": "frueh", "Laugenbaeckerei": "frueh", "Brot": "flach",
+    "Gebaeck": "nachmittag", "Imbiss": "mittag",
 }
 _MIN_TAGE_EIGENE_KURVE = 12
 _MIN_TAGE_WARENGRUPPE = 30

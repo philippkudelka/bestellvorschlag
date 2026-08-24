@@ -1,44 +1,69 @@
-# Zehn Filialen im Landkreis Rosenheim.
-# grundniveau: Groessenfaktor der Filiale (0.4 klein ... 1.8 gross).
-# oeffnungszeiten: je Wochentag eine Liste von [von, bis]-Zeitraeumen
-#   (mehrere Zeitraeume = Mittagspause), null = geschlossen.
-# august_nachmittag_zu: im August schliesst die Filiale um 12:30.
-# eroeffnet_am / umbau: Luecken im Beobachtungszeitraum.
+# Die neun Filialen der Baeckerei Anders GmbH & Co. KG (Bruckmuehl).
+# Quelle: baeckerei-anders.de/filialen, Stand 2026-08-24.
+# grundniveau/trend sind SCHAETZUNGEN fuer die Simulation (keine echten Zahlen).
+# eroeffnet_am/umbau sind SYNTHETISCHE Simulationsannahmen — der Auftrag
+# verlangt eine Neueroeffnung und eine Umbaupause im Beobachtungszeitraum.
 
 filialen:
   - nummer: 1
-    name: Stammhaus
-    ort: Rosenheim
+    name: Heufeldmuehle
+    ort: Bruckmuehl
+    strasse: Gewerbepark Bwb 16
+    plz: "83052"
+    telefon: "08062-7298482"
     grundniveau: 1.8
-    trend_prozent_pro_jahr: 1.5
+    trend_prozent_pro_jahr: 2.0
     oeffnungszeiten:
-      mo: [["06:00", "18:00"]]
-      di: [["06:00", "18:00"]]
-      mi: [["06:00", "18:00"]]
-      do: [["06:00", "18:00"]]
-      fr: [["06:00", "18:00"]]
-      sa: [["06:00", "13:00"]]
-      so: [["07:00", "11:30"]]
+      mo: [["06:00", "19:00"]]
+      di: [["06:00", "19:00"]]
+      mi: [["06:00", "19:00"]]
+      do: [["06:00", "19:00"]]
+      fr: [["06:00", "19:00"]]
+      sa: [["06:00", "18:00"]]
+      so: [["07:30", "11:00"]]
 
   - nummer: 2
-    name: Bahnhofstrasse
-    ort: Rosenheim
-    grundniveau: 1.4
-    trend_prozent_pro_jahr: 3.0
+    name: Goetting
+    ort: Bruckmuehl
+    strasse: Aiblingerstr. 28
+    plz: "83052"
+    telefon: "08062-5528"
+    grundniveau: 0.6
+    trend_prozent_pro_jahr: 0.0
     oeffnungszeiten:
-      mo: [["05:30", "18:30"]]
-      di: [["05:30", "18:30"]]
-      mi: [["05:30", "18:30"]]
-      do: [["05:30", "18:30"]]
-      fr: [["05:30", "18:30"]]
-      sa: [["06:00", "14:00"]]
+      mo: [["06:00", "12:00"], ["14:00", "18:00"]]   # Mittagspause
+      di: [["06:00", "12:00"]]                        # Dienstagnachmittag zu
+      mi: [["06:00", "12:00"], ["14:00", "18:00"]]
+      do: [["06:00", "12:00"], ["14:00", "18:00"]]
+      fr: [["06:00", "12:00"], ["14:00", "18:00"]]
+      sa: [["06:00", "12:00"]]
       so: null
 
   - nummer: 3
-    name: Seestrasse
-    ort: Prien am Chiemsee
-    grundniveau: 1.1
-    trend_prozent_pro_jahr: 2.0
+    name: Bad Aibling Bahnhof
+    ort: Bad Aibling
+    strasse: Bahnhofstr. 32
+    plz: "83043"
+    telefon: "08061-9391771"
+    grundniveau: 1.3
+    trend_prozent_pro_jahr: 2.5
+    oeffnungszeiten:
+      mo: [["05:30", "18:00"]]
+      di: [["05:30", "18:00"]]
+      mi: [["05:30", "18:00"]]
+      do: [["05:30", "18:00"]]
+      fr: [["05:30", "18:00"]]
+      sa: [["05:30", "13:00"]]
+      so: [["07:30", "10:30"]]
+
+  - nummer: 4
+    name: Westerham
+    ort: Feldkirchen-Westerham
+    strasse: Aiblingerstr. 3
+    plz: "83620"
+    telefon: "08063-261"
+    grundniveau: 1.0
+    trend_prozent_pro_jahr: 1.0
     oeffnungszeiten:
       mo: [["06:00", "18:00"]]
       di: [["06:00", "18:00"]]
@@ -46,106 +71,91 @@ filialen:
       do: [["06:00", "18:00"]]
       fr: [["06:00", "18:00"]]
       sa: [["06:00", "12:30"]]
-      so: [["07:00", "11:00"]]   # Sonntag nur vormittags — Beispiel aus dem Auftrag
-
-  - nummer: 4
-    name: Marienplatz
-    ort: Bad Aibling
-    grundniveau: 1.0
-    trend_prozent_pro_jahr: 0.0
-    oeffnungszeiten:
-      mo: [["06:00", "12:30"], ["14:00", "18:00"]]   # Mittagspause
-      di: [["06:00", "12:30"], ["14:00", "18:00"]]
-      mi: [["06:00", "12:30"], ["14:00", "18:00"]]
-      do: [["06:00", "12:30"], ["14:00", "18:00"]]
-      fr: [["06:00", "12:30"], ["14:00", "18:00"]]
-      sa: [["06:00", "12:30"]]
-      so: null
+      so: [["08:00", "11:00"]]
 
   - nummer: 5
-    name: Altstadt
-    ort: Wasserburg am Inn
-    grundniveau: 0.9
-    trend_prozent_pro_jahr: -1.5
-    august_nachmittag_zu: true     # im August nachmittags geschlossen
+    name: Griesstaett
+    ort: Griesstaett
+    strasse: Innthalstr. 3
+    plz: "83556"
+    telefon: "08039-9020370"
+    grundniveau: 0.7
+    trend_prozent_pro_jahr: 1.5
     oeffnungszeiten:
-      mo: [["06:00", "17:30"]]
-      di: [["06:00", "17:30"]]
-      mi: [["06:00", "17:30"]]
-      do: [["06:00", "17:30"]]
-      fr: [["06:00", "17:30"]]
-      sa: [["06:00", "12:30"]]
+      mo: [["07:00", "19:00"]]
+      di: [["07:00", "19:00"]]
+      mi: [["07:00", "19:00"]]
+      do: [["07:00", "19:00"]]
+      fr: [["07:00", "19:00"]]
+      sa: [["07:00", "18:00"]]
       so: null
 
   - nummer: 6
-    name: Mangfallbogen
-    ort: Kolbermoor
-    grundniveau: 0.8
-    trend_prozent_pro_jahr: 1.0
-    umbau: { von: "2024-10-07", bis: "2024-10-20" }   # zwei Wochen Umbaupause
+    name: REWE Bruckmuehl
+    ort: Bruckmuehl
+    strasse: Kirchdorferstr. 15A
+    plz: "83052"
+    telefon: "08062-8087319"
+    grundniveau: 1.2
+    trend_prozent_pro_jahr: 3.0
     oeffnungszeiten:
-      mo: [["06:00", "18:00"]]
-      di: [["06:00", "18:00"]]
-      mi: [["06:00", "18:00"]]
-      do: [["06:00", "18:00"]]
-      fr: [["06:00", "18:00"]]
-      sa: [["06:00", "13:00"]]
-      so: [["07:30", "11:00"]]
+      mo: [["07:00", "20:00"]]
+      di: [["07:00", "20:00"]]
+      mi: [["07:00", "20:00"]]
+      do: [["07:00", "20:00"]]
+      fr: [["07:00", "20:00"]]
+      sa: [["07:00", "20:00"]]
+      so: [["07:30", "10:30"]]
 
   - nummer: 7
-    name: Dorfladen
-    ort: Bruckmuehl
-    grundniveau: 0.6
-    trend_prozent_pro_jahr: 0.5
+    name: Wasserburg
+    ort: Wasserburg am Inn
+    strasse: Heubergstr. 1
+    plz: "83512"
+    telefon: "08071-924215"
+    grundniveau: 0.9
+    trend_prozent_pro_jahr: -1.0
+    umbau: { von: "2024-10-07", bis: "2024-10-20" }   # SYNTHETISCH (Simulation)
     oeffnungszeiten:
-      mo: [["06:30", "17:00"]]
-      di: [["06:30", "17:00"]]
-      mi: [["06:30", "17:00"]]
-      do: [["06:30", "17:00"]]
-      fr: [["06:30", "17:00"]]
+      mo: [["06:30", "18:00"]]
+      di: [["06:30", "18:00"]]
+      mi: [["06:30", "18:00"]]
+      do: [["06:30", "18:00"]]
+      fr: [["06:30", "18:00"]]
       sa: [["06:30", "12:00"]]
-      so: null
+      so: [["08:00", "11:00"]]
 
   - nummer: 8
-    name: Am Inn
-    ort: Raubling
-    grundniveau: 0.7
-    trend_prozent_pro_jahr: 2.5
-    august_nachmittag_zu: true     # zweite Filiale mit Augustschliessung
+    name: Schechen
+    ort: Schechen
+    strasse: Rosenheimerstr. 58
+    plz: "83135"
+    telefon: "08039-408347"
+    grundniveau: 0.8
+    trend_prozent_pro_jahr: 0.5
     oeffnungszeiten:
-      mo: [["06:00", "17:00"]]
-      di: [["06:00", "17:00"]]
-      mi: [["06:00", "17:00"]]
-      do: [["06:00", "17:00"]]
-      fr: [["06:00", "17:00"]]
-      sa: [["06:00", "12:30"]]
-      so: null
+      mo: [["06:00", "18:30"]]
+      di: [["06:00", "18:30"]]
+      mi: [["06:00", "18:30"]]
+      do: [["06:00", "18:30"]]
+      fr: [["06:00", "18:30"]]
+      sa: [["07:00", "13:00"]]
+      so: [["08:00", "11:00"]]
 
   - nummer: 9
-    name: Kurpark
-    ort: Bad Endorf
-    grundniveau: 0.5
+    name: REWE Aying
+    ort: Aying/Grosshelfendorf
+    strasse: Roemerstr. 16
+    plz: "85655"
+    telefon: "08095-8750775"
+    grundniveau: 0.7
     trend_prozent_pro_jahr: 4.0
-    eroeffnet_am: "2025-03-01"     # Neueroeffnung im Beobachtungszeitraum
+    eroeffnet_am: "2025-03-01"                        # SYNTHETISCH (Simulation)
     oeffnungszeiten:
-      mo: [["06:30", "17:30"]]
-      di: [["06:30", "17:30"]]
-      mi: [["06:30", "17:30"]]
-      do: [["06:30", "17:30"]]
-      fr: [["06:30", "17:30"]]
-      sa: [["06:30", "12:30"]]
-      so: [["07:30", "11:00"]]
-
-  - nummer: 10
-    name: Simsseeblick
-    ort: Riedering
-    grundniveau: 0.4
-    trend_prozent_pro_jahr: 0.0
-    oeffnungszeiten:
-      mo: [["06:30", "16:00"]]
-      di: [["06:30", "16:00"]]
-      mi: [["06:30", "16:00"]]
-      do: [["06:30", "16:00"]]
-      fr: [["06:30", "16:00"]]
-      sa: [["06:30", "12:00"]]
+      mo: [["07:00", "20:00"]]
+      di: [["07:00", "20:00"]]
+      mi: [["07:00", "20:00"]]
+      do: [["07:00", "20:00"]]
+      fr: [["07:00", "20:00"]]
+      sa: [["07:00", "20:00"]]
       so: null

@@ -76,11 +76,10 @@ async function ladeUebersicht() {
   rumpf.innerHTML = "";
   for (const f of daten.filialen) {
     const zeile = document.createElement("tr");
-    if (f.auffaellig > 0) zeile.classList.add("auffaellig");
     const marke = f.zustand === "geschlossen" ? "leise"
       : f.zustand === "kein Vorschlag" ? "warn" : "ok";
     zeile.innerHTML = `
-      <td><strong>${f.name}</strong><span class="begruendung">${f.ort}</span></td>
+      <td><strong>${f.name}</strong><span class="begruendung">${f.anschrift}</span></td>
       <td>${f.oeffnung}</td>
       <td><span class="marke ${marke}">${f.zustand}</span></td>
       <td class="zahl">${f.auffaellig > 0
@@ -122,7 +121,8 @@ async function ladeBestellung() {
   el("liefertag").value = daten.liefertag;
 
   el("bestellung-kopf").innerHTML = `
-    <span class="gross">${daten.filiale.name}, ${daten.filiale.ort}</span>
+    <span class="gross">${daten.filiale.name}</span>
+    <span class="leise">${daten.filiale.anschrift}</span>
     <span>Liefertag ${datumDe(daten.liefertag)}</span>
     <span class="leise">geöffnet ${daten.oeffnung}</span>`;
 

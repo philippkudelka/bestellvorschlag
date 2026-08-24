@@ -70,7 +70,8 @@ def _vorhersagen_fuer(ablage: Ablage, liefertag: str) -> dict | None:
 @app.get("/api/filialen")
 def filialen():
     with _ablage() as ab:
-        df = ab.lese("SELECT nummer, name, ort FROM filiale ORDER BY nummer")
+        df = ab.lese("SELECT nummer, name, ort, strasse, plz, telefon"
+                     " FROM filiale ORDER BY nummer")
         return df.to_dict(orient="records")
 
 
@@ -78,7 +79,8 @@ def filialen():
 def tagesuebersicht(liefertag: str | None = None):
     with _ablage() as ab:
         liefertag = liefertag or _standard_liefertag(ab)
-        filialen = ab.lese("SELECT nummer, name, ort FROM filiale ORDER BY nummer")
+        filialen = ab.lese("SELECT nummer, name, ort, strasse, plz FROM filiale"
+                           " ORDER BY nummer")
         vorschlaege = ab.lese(
             """SELECT filiale, COUNT(*) AS anzahl, SUM(auffaellig) AS auffaellig
                FROM vorschlag WHERE liefertag = ? AND erstellt_am =
@@ -114,6 +116,8 @@ def tagesuebersicht(liefertag: str | None = None):
                     "fertig" if v is not None else "kein Vorschlag"))
             zeilen.append({
                 "filiale": int(f.nummer), "name": f.name, "ort": f.ort,
+                "anschrift": (f"{f.strasse}, {f.plz} {f.ort}"
+                              if f.strasse else f.ort),
                 "zustand": zustand,
                 "oeffnung": " und ".join(f"{v_}-{b_}" for v_, b_ in offen) or "—",
                 "anzahl_vorschlaege": int(v["anzahl"]) if v is not None else 0,
@@ -149,8 +153,8 @@ def vorschlag(filiale: int, liefertag: str | None = None):
             "SELECT artikel, menge FROM bestellung WHERE liefertag = ? AND filiale = ?",
             (liefertag, filiale)).set_index("artikel")
 
-        info = ab.lese("SELECT nummer, name, ort FROM filiale WHERE nummer = ?",
-                       (filiale,))
+        info = ab.lese("SELECT nummer, name, ort, strasse, plz FROM filiale"
+                       " WHERE nummer = ?", (filiale,))
         if info.empty:
             raise HTTPException(404, "Unbekannte Filiale")
         offen = ab.oeffnung(filiale, liefertag)
@@ -182,7 +186,10 @@ def vorschlag(filiale: int, liefertag: str | None = None):
         return {
             "liefertag": liefertag,
             "filiale": {"nummer": int(info.loc[0, "nummer"]),
-                        "name": info.loc[0, "name"], "ort": info.loc[0, "ort"]},
+                        "name": info.loc[0, "name"], "ort": info.loc[0, "ort"],
+                        "anschrift": (f"{info.loc[0, 'strasse']}, "
+                                      f"{info.loc[0, 'plz']} {info.loc[0, 'ort']}"
+                                      if info.loc[0, "strasse"] else info.loc[0, "ort"])},
             "oeffnung": " und ".join(f"{v_}-{b_}" for v_, b_ in offen) or "geschlossen",
             "positionen": zeilen,
         }

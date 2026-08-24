@@ -1,6 +1,9 @@
 # Abschlussbericht — Bestellvorschlag, erste lauffähige Fassung
 
-Stand: 2026-08-23. Es ist ein System auf **simulierten** Daten. Es beweist,
+Stand: 2026-08-23; am 2026-08-24 auf die Bäckerei Anders (Bruckmühl)
+umgestellt: neun echte Filialen mit Adressen und Öffnungszeiten, echtes
+Brotsortiment, Markenfarben — die Verkaufszahlen bleiben simuliert
+(Details: ENTSCHEIDUNGEN.md, Abschnitt „Umstellung auf Bäckerei Anders"). Es ist ein System auf **simulierten** Daten. Es beweist,
 dass das Verfahren rechnet — nicht, dass es in einer echten Bäckerei
 funktioniert.
 

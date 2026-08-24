@@ -48,7 +48,7 @@ def system(tmp_path_factory):
 def test_modell_abgeschaltet_rueckfall_fuer_alle_filialen(system):
     konfig, ablage = system
     stat = erzeuge_vorschlaege(ablage, konfig, LIEFERTAG, modell_abschalten=True)
-    assert stat["filialen"] == 10, "auch ohne Modell: alle offenen Filialen versorgt"
+    assert stat["filialen"] == 9, "auch ohne Modell: alle offenen Filialen versorgt"
     df = ablage.lese(
         "SELECT * FROM vorschlag WHERE liefertag = ? AND modellstand != 'bestandsrechnung'",
         (LIEFERTAG,))
