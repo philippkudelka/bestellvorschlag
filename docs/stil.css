@@ -1,0 +1,304 @@
+/* Tablet-Oberflaeche, Querformat ~1180x820, Bedienung mit dem Finger.
+   Markenfarben der Baeckerei Anders (baeckerei-anders.de):
+   Blau #1961ac (Akzent, Vorschlagszahl), Gold #fdc300 (Auffaelligkeiten),
+   Dunkelblau #0c3057 (Kopf und Schaltflaechen). */
+
+:root {
+  --papier: #f5f6f8;
+  --flaeche: #ffffff;
+  --linie: #dde2e9;
+  --tinte: #1c2733;
+  --tinte-leise: #5d6b7a;
+  --dunkelblau: #0c3057;
+  --akzent: #1961ac;
+  --akzent-hell: #e6eef7;
+  --gold: #fdc300;
+  --warnton: #8a6a00;
+  --warnton-hell: #fdf3cc;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 17px; }
+
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  background: var(--papier);
+  color: var(--tinte);
+  min-width: 1000px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 24px;
+  background: var(--flaeche);
+  border-bottom: 3px solid var(--gold);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.marke-kopf {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dunkelblau);
+  white-space: nowrap;
+}
+
+.marke-kopf small {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--tinte-leise);
+  letter-spacing: 0.04em;
+}
+
+nav { display: flex; gap: 8px; }
+
+nav button {
+  min-height: 48px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  background: var(--flaeche);
+  color: var(--tinte);
+  cursor: pointer;
+}
+
+nav button.aktiv {
+  background: var(--dunkelblau);
+  border-color: var(--dunkelblau);
+  color: #fff;
+  font-weight: 600;
+}
+
+#kopf-rechts { display: flex; align-items: center; gap: 10px; color: var(--tinte-leise); }
+
+#kopf-rechts input {
+  min-height: 44px;
+  padding: 0 12px;
+  font-size: 1rem;
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  background: var(--flaeche);
+  color: var(--tinte);
+}
+
+main { padding: 20px 24px 40px; max-width: 1180px; margin: 0 auto; }
+
+h1 { font-size: 1.35rem; margin: 10px 0 16px; }
+
+.erklaerung { color: var(--tinte-leise); margin-bottom: 14px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--flaeche);
+  border: 1px solid var(--linie);
+  border-radius: 12px;
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--linie);
+  vertical-align: middle;
+}
+
+th { color: var(--tinte-leise); font-weight: 600; font-size: 0.85rem; }
+
+tr:last-child td { border-bottom: none; }
+
+.zahl, td.zahl { text-align: right; }
+
+/* Die Vorschlagszahl muss aus zwei Metern lesbar sein */
+td.vorschlagszahl {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--akzent);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+tr.auffaellig { background: var(--warnton-hell); box-shadow: inset 4px 0 0 var(--gold); }
+
+.begruendung {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--tinte-leise);
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+tr.auffaellig .begruendung { color: var(--warnton); }
+
+.marke {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.marke.warn { background: var(--warnton-hell); color: var(--warnton); }
+.marke.ok { background: var(--akzent-hell); color: var(--akzent); }
+.marke.leise { background: var(--papier); color: var(--tinte-leise); }
+
+button.haupt {
+  min-height: 52px;
+  padding: 0 28px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--akzent);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+button.haupt:disabled { opacity: 0.45; cursor: default; }
+
+button.zeile {
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 0.95rem;
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  background: var(--flaeche);
+  cursor: pointer;
+}
+
+.filialwahl { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+
+.filialwahl button {
+  min-height: 46px;
+  padding: 0 16px;
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  background: var(--flaeche);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.filialwahl button.aktiv {
+  background: var(--dunkelblau);
+  color: #fff;
+  border-color: var(--dunkelblau);
+  font-weight: 600;
+}
+
+#bestellung-kopf {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  margin-bottom: 14px;
+  font-size: 1.1rem;
+}
+
+#bestellung-kopf .gross { font-size: 1.35rem; font-weight: 700; }
+#bestellung-kopf .leise { color: var(--tinte-leise); }
+
+input.menge {
+  width: 110px;
+  min-height: 48px;
+  font-size: 1.3rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  padding: 0 12px;
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  background: var(--flaeche);
+}
+
+input.menge.geaendert { border-color: var(--akzent); border-width: 2px; }
+
+.fussleiste {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: var(--flaeche);
+  border: 1px solid var(--linie);
+  border-radius: 12px;
+}
+
+#bestellung-hinweis { color: var(--tinte-leise); }
+
+/* Servicegrad-Wahl: drei klar beschriftete Knoepfe */
+.sg-wahl { display: inline-flex; gap: 6px; }
+
+.sg-wahl button {
+  min-width: 56px;
+  min-height: 46px;
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  background: var(--flaeche);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sg-wahl button.aktiv {
+  background: var(--dunkelblau);
+  color: #fff;
+  border-color: var(--dunkelblau);
+}
+
+#warnung-kasten {
+  background: var(--warnton-hell);
+  border: 1px solid var(--warnton);
+  color: var(--warnton);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  white-space: pre-line;
+}
+
+#ereignis-formular {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: flex-end;
+  background: var(--flaeche);
+  border: 1px solid var(--linie);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+#ereignis-formular .feld { display: flex; flex-direction: column; gap: 6px; }
+#ereignis-formular .feld.breit { flex: 1; min-width: 220px; }
+
+#ereignis-formular label { font-size: 0.85rem; color: var(--tinte-leise); }
+
+#ereignis-formular input, #ereignis-formular select {
+  min-height: 46px;
+  padding: 0 12px;
+  font-size: 1rem;
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  background: var(--flaeche);
+}
+
+.leer { color: var(--tinte-leise); padding: 24px; text-align: center; }
+
+/* Felderklaerungen: gepunktete Linie = hier gibt es einen Maus-Tooltip */
+th[title] { cursor: help; text-decoration: underline dotted; text-underline-offset: 3px; }
+td.vorschlagszahl[title] { cursor: help; }
+
+.hilfe-titel { font-size: 1.05rem; margin: 22px 0 10px; color: var(--dunkelblau); }
+
+table.hilfe td:first-child {
+  width: 240px;
+  font-weight: 600;
+  color: var(--dunkelblau);
+  vertical-align: top;
+}
