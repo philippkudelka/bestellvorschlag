@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: #f5f6f8; color: #1c2733; }
+    a { color: #1961ac; } a:hover { color: #0c3057; }
+    table { border-collapse: collapse; }
+  </style>
+</helmet>
+<div style="width: 1180px; background: #f5f6f8;">
+  <div style="display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 12px 24px; background: #ffffff; border-bottom: 3px solid #fdc300;">
+    <div style="font-size: 20px; font-weight: 700; color: #0c3057; white-space: nowrap;">Bäckerei Anders<div style="font-size: 12px; font-weight: 500; color: #5d6b7a; letter-spacing: 0.04em;">Bestellvorschlag · Heufeldmühle</div></div>
+    <div style="display: flex; gap: 8px;">
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Tagesübersicht</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Bestellvorschlag</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Servicegrade</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #0c3057; border-radius: 10px; background: #0c3057; color: #ffffff; font-weight: 600;">Ereignisse</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Hilfe</button>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; color: #5d6b7a; font-size: 17px;"><span>Liefertag</span><span style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 12px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-variant-numeric: tabular-nums;">25.08.2026</span></div>
+  </div>
+  <div style="padding: 20px 24px 40px; display: flex; flex-direction: column; gap: 16px;">
+    <h1 style="font-size: 23px; margin: 0; font-weight: 700;">Ereigniskalender</h1>
+    <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; background: #ffffff; border: 1px solid #dde2e9; border-radius: 12px; padding: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 14px; color: #5d6b7a;">Von</span><span style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 12px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">tt.mm.jjjj</span></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 14px; color: #5d6b7a;">Bis</span><span style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 12px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">tt.mm.jjjj</span></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 14px; color: #5d6b7a;">Filialen</span><span style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 12px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">alle</span></div>
+      <div style="display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 220px;"><span style="font-size: 14px; color: #5d6b7a;">Was ist los?</span><span style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 12px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">z. B. Dorffest Bruckmühl</span></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 14px; color: #5d6b7a;">Erwartete Wirkung</span><span style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 12px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">mehr Verkauf (+20 %)</span></div>
+      <button style="min-height: 52px; padding: 0 28px; font-size: 18px; font-weight: 600; color: #ffffff; background: #1961ac; border: none; border-radius: 12px;">Eintragen</button>
+    </div>
+    <table style="width: 100%; background: #ffffff; border: 1px solid #dde2e9; border-radius: 12px; overflow: hidden;">
+      <thead>
+        <tr>
+          <th style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Von</th>
+          <th style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Bis</th>
+          <th style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Filialen</th>
+          <th style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Bezeichnung</th>
+          <th style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Wirkung</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">03.08.2026</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">04.08.2026</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">9</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Dorffest Bad Endorf</strong></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">+56 %</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">27.07.2026</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">28.07.2026</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">4</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Dorffest Bad Aibling</strong></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">+59 %</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">15.06.2026</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">16.06.2026</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">10</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Dorffest Riedering</strong></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">+55 %</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">06.10.2025</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">11.10.2025</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">alle</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Aktionswoche</strong></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">+20 %</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

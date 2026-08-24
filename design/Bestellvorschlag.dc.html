@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: #f5f6f8; color: #1c2733; }
+    a { color: #1961ac; } a:hover { color: #0c3057; }
+    table { border-collapse: collapse; }
+  </style>
+</helmet>
+<div style="width: 1180px; background: #f5f6f8;">
+  <div style="display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 12px 24px; background: #ffffff; border-bottom: 3px solid #fdc300;">
+    <div style="font-size: 20px; font-weight: 700; color: #0c3057; white-space: nowrap;">Bäckerei Anders<div style="font-size: 12px; font-weight: 500; color: #5d6b7a; letter-spacing: 0.04em;">Bestellvorschlag · Heufeldmühle</div></div>
+    <div style="display: flex; gap: 8px;">
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Tagesübersicht</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #0c3057; border-radius: 10px; background: #0c3057; color: #ffffff; font-weight: 600;">Bestellvorschlag</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Servicegrade</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Ereignisse</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Hilfe</button>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; color: #5d6b7a; font-size: 17px;"><span>Liefertag</span><span style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 12px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-variant-numeric: tabular-nums;">25.08.2026</span></div>
+  </div>
+  <div style="padding: 20px 24px 40px; display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <button style="min-height: 46px; padding: 0 16px; border: 1px solid #0c3057; border-radius: 10px; background: #0c3057; color: #ffffff; font-size: 16px; font-weight: 600;">1 · Heufeldmuehle</button>
+      <button style="min-height: 46px; padding: 0 16px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 16px;">2 · Goetting</button>
+      <button style="min-height: 46px; padding: 0 16px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 16px;">3 · Bad Aibling Bahnhof</button>
+      <button style="min-height: 46px; padding: 0 16px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 16px;">4 · Westerham</button>
+      <button style="min-height: 46px; padding: 0 16px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 16px;">5 · Griesstaett</button>
+      <button style="min-height: 46px; padding: 0 16px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 16px;">6 · REWE Bruckmuehl</button>
+      <button style="min-height: 46px; padding: 0 16px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 16px;">7 · Wasserburg</button>
+      <button style="min-height: 46px; padding: 0 16px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 16px;">8 · Schechen</button>
+      <button style="min-height: 46px; padding: 0 16px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 16px;">9 · REWE Aying</button>
+    </div>
+    <div style="display: flex; gap: 24px; align-items: baseline; font-size: 19px;">
+      <span style="font-size: 23px; font-weight: 700;">Heufeldmuehle</span>
+      <span style="color: #5d6b7a;">Gewerbepark Bwb 16, 83052 Bruckmuehl</span>
+      <span>Liefertag 25.08.2026</span>
+      <span style="color: #5d6b7a;">geöffnet 06:00-19:00</span>
+    </div>
+    <table style="width: 100%; background: #ffffff; border: 1px solid #dde2e9; border-radius: 12px; overflow: hidden;">
+      <thead>
+        <tr>
+          <th style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Art.-Nr.</th>
+          <th style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Bezeichnung</th>
+          <th style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Vorschlag</th>
+          <th style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">wirtschaftlich günstigste Menge</th>
+          <th style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Vorwoche geliefert</th>
+          <th style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Vorwoche Retoure</th>
+          <th style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Bestellmenge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="">
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00301</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Mischbrot 750g</strong></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: {{akzent}}; line-height: 1.1; white-space: nowrap; font-variant-numeric: tabular-nums;">63</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">56</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">63</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">12</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; align-items: center; justify-content: flex-end; width: 110px; min-height: 48px; font-size: 22px; font-variant-numeric: tabular-nums; padding: 0 12px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">63</span></td>
+        </tr>
+        <tr style="">
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00302</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Bauernbrot mit Gewuerz</strong></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: {{akzent}}; line-height: 1.1; white-space: nowrap; font-variant-numeric: tabular-nums;">52</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">42</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">46</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">13</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; align-items: center; justify-content: flex-end; width: 110px; min-height: 48px; font-size: 22px; font-variant-numeric: tabular-nums; padding: 0 12px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">52</span></td>
+        </tr>
+        <tr style="">
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00303</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Bauernbrot ohne Gewuerz</strong></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: {{akzent}}; line-height: 1.1; white-space: nowrap; font-variant-numeric: tabular-nums;">35</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">33</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">41</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">4</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; align-items: center; justify-content: flex-end; width: 110px; min-height: 48px; font-size: 22px; font-variant-numeric: tabular-nums; padding: 0 12px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">35</span></td>
+        </tr>
+        <tr style="">
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00304</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Sonnenblumenbrot</strong></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: {{akzent}}; line-height: 1.1; white-space: nowrap; font-variant-numeric: tabular-nums;">32</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">27</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">30</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">7</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; align-items: center; justify-content: flex-end; width: 110px; min-height: 48px; font-size: 22px; font-variant-numeric: tabular-nums; padding: 0 12px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">32</span></td>
+        </tr>
+        <tr style="background: #fdf3cc; box-shadow: inset 4px 0 0 #fdc300;">
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00308</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Joggingbrot</strong><span style="display: block; font-size: 14px; color: #8a6a00; margin-top: 4px;">17 von 31 zurück letzte Woche — deshalb weniger. Dienstag — 17 % über dem Schnitt</span></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: {{akzent}}; line-height: 1.1; white-space: nowrap; font-variant-numeric: tabular-nums;">25</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">22</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">31</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">17</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; align-items: center; justify-content: flex-end; width: 110px; min-height: 48px; font-size: 22px; font-variant-numeric: tabular-nums; padding: 0 12px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">25</span></td>
+        </tr>
+        <tr style="background: #fdf3cc; box-shadow: inset 4px 0 0 #fdc300;">
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00204</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Butterbrezn</strong><span style="display: block; font-size: 14px; color: #8a6a00; margin-top: 4px;">Letzten Dienstag um 18:25 ausverkauft — deshalb 10 Stück mehr</span></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: {{akzent}}; line-height: 1.1; white-space: nowrap; font-variant-numeric: tabular-nums;">111</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">91</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">101</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">0</td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; align-items: center; justify-content: flex-end; width: 110px; min-height: 48px; font-size: 22px; font-variant-numeric: tabular-nums; padding: 0 12px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff;">111</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 14px 16px; background: #ffffff; border: 1px solid #dde2e9; border-radius: 12px;">
+      <span style="color: #5d6b7a; font-size: 16px;">Vorschlag prüfen, Mengen ggf. anpassen, in die Warenwirtschaft übertragen — dann bestätigen.</span>
+      <button style="min-height: 52px; padding: 0 28px; font-size: 18px; font-weight: 600; color: #ffffff; background: {{akzent}}; border: none; border-radius: 12px;">Bestellung übernommen</button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"akzent":{"editor":"color","default":"#1961ac","options":["#1961ac","#0c3057","#0e6e66","#8a4b12"],"section":"Marke"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { akzent: this.props.akzent ?? '#1961ac' };
+  }
+}
+</script>
+</body>
+</html>

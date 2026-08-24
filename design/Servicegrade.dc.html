@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: #f5f6f8; color: #1c2733; }
+    a { color: #1961ac; } a:hover { color: #0c3057; }
+    table { border-collapse: collapse; }
+  </style>
+</helmet>
+<div style="width: 1180px; background: #f5f6f8;">
+  <div style="display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 12px 24px; background: #ffffff; border-bottom: 3px solid #fdc300;">
+    <div style="font-size: 20px; font-weight: 700; color: #0c3057; white-space: nowrap;">Bäckerei Anders<div style="font-size: 12px; font-weight: 500; color: #5d6b7a; letter-spacing: 0.04em;">Bestellvorschlag · Heufeldmühle</div></div>
+    <div style="display: flex; gap: 8px;">
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Tagesübersicht</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Bestellvorschlag</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #0c3057; border-radius: 10px; background: #0c3057; color: #ffffff; font-weight: 600;">Servicegrade</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Ereignisse</button>
+      <button style="min-height: 48px; padding: 0 20px; font-size: 17px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733;">Hilfe</button>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; color: #5d6b7a; font-size: 17px;"><span>Liefertag</span><span style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 12px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-variant-numeric: tabular-nums;">25.08.2026</span></div>
+  </div>
+  <div style="padding: 20px 24px 40px; display: flex; flex-direction: column; gap: 16px;">
+    <h1 style="font-size: 23px; margin: 0; font-weight: 700;">Servicegrade einstellen</h1>
+    <p style="color: #5d6b7a; margin: 0; font-size: 17px;">A = darf nicht ausgehen · B = darf am späten Nachmittag ausgehen · C = darf mittags weg sein. Die Mengenspalte zeigt sofort, was die Wahl bedeutet.</p>
+    <table style="width: 100%; background: #ffffff; border: 1px solid #dde2e9; border-radius: 12px; overflow: hidden;">
+      <thead>
+        <tr>
+          <th style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Art.-Nr.</th>
+          <th style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Bezeichnung</th>
+          <th style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Servicegrad</th>
+          <th style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; color: #5d6b7a; font-weight: 600; font-size: 14px;">Menge bei dieser Wahl</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00201</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Brezn</strong><span style="display: block; font-size: 14px; color: #5d6b7a; margin-top: 4px;">Laugenbaeckerei</span></td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; gap: 6px;"><button style="min-width: 56px; min-height: 46px; border: 1px solid #0c3057; border-radius: 10px; background: #0c3057; color: #ffffff; font-size: 17px; font-weight: 600;">A</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">B</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">C</button></span></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: #1961ac; line-height: 1.1; font-variant-numeric: tabular-nums;">239</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00202</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Laugenweckerl</strong><span style="display: block; font-size: 14px; color: #5d6b7a; margin-top: 4px;">Laugenbaeckerei</span></td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; gap: 6px;"><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">A</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #0c3057; border-radius: 10px; background: #0c3057; color: #ffffff; font-size: 17px; font-weight: 600;">B</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">C</button></span></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: #1961ac; line-height: 1.1; font-variant-numeric: tabular-nums;">80</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00204</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Butterbrezn</strong><span style="display: block; font-size: 14px; color: #5d6b7a; margin-top: 4px;">Laugenbaeckerei</span></td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; gap: 6px;"><button style="min-width: 56px; min-height: 46px; border: 1px solid #0c3057; border-radius: 10px; background: #0c3057; color: #ffffff; font-size: 17px; font-weight: 600;">A</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">B</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">C</button></span></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: #1961ac; line-height: 1.1; font-variant-numeric: tabular-nums;">111</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00301</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Mischbrot 750g</strong><span style="display: block; font-size: 14px; color: #5d6b7a; margin-top: 4px;">Brot</span></td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; gap: 6px;"><button style="min-width: 56px; min-height: 46px; border: 1px solid #0c3057; border-radius: 10px; background: #0c3057; color: #ffffff; font-size: 17px; font-weight: 600;">A</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">B</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">C</button></span></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: #1961ac; line-height: 1.1; font-variant-numeric: tabular-nums;">63</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00304</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Sonnenblumenbrot</strong><span style="display: block; font-size: 14px; color: #5d6b7a; margin-top: 4px;">Brot</span></td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; gap: 6px;"><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">A</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #0c3057; border-radius: 10px; background: #0c3057; color: #ffffff; font-size: 17px; font-weight: 600;">B</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">C</button></span></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: #1961ac; line-height: 1.1; font-variant-numeric: tabular-nums;">32</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;">00310</td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><strong>Dinkelbrot 750g</strong><span style="display: block; font-size: 14px; color: #5d6b7a; margin-top: 4px;">Brot</span></td>
+          <td style="text-align: left; padding: 12px 14px; border-bottom: 1px solid #dde2e9; vertical-align: middle; font-size: 17px; font-variant-numeric: tabular-nums;"><span style="display: inline-flex; gap: 6px;"><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">A</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #0c3057; border-radius: 10px; background: #0c3057; color: #ffffff; font-size: 17px; font-weight: 600;">B</button><button style="min-width: 56px; min-height: 46px; border: 1px solid #dde2e9; border-radius: 10px; background: #ffffff; color: #1c2733; font-size: 17px; font-weight: 600;">C</button></span></td>
+          <td style="text-align: right; padding: 12px 14px; border-bottom: 1px solid #dde2e9; font-size: 36px; font-weight: 700; color: #1961ac; line-height: 1.1; font-variant-numeric: tabular-nums;">21</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

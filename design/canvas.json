@@ -1,0 +1,48 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1180,
+      "h": 860,
+      "title": "Tagesübersicht"
+    },
+    {
+      "file": "Bestellvorschlag.dc.html",
+      "x": 1280,
+      "y": 0,
+      "w": 1180,
+      "h": 940,
+      "title": "Bestellvorschlag"
+    },
+    {
+      "file": "Servicegrade.dc.html",
+      "x": 0,
+      "y": 960,
+      "w": 1180,
+      "h": 800,
+      "title": "Servicegrade"
+    },
+    {
+      "file": "Ereignisse.dc.html",
+      "x": 1280,
+      "y": 1040,
+      "w": 1180,
+      "h": 720,
+      "title": "Ereigniskalender"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "kontext",
+      "x": 0,
+      "y": -150,
+      "w": 460,
+      "text": "Bäckerei Anders — Bestellvorschlag (Tablet, 1180 px Querformat).\nVier Ansichten, 1:1 nach der laufenden App; Daten sind simulierte Beispiele vom 25.08.2026.\nMarkenfarben: Blau #1961ac, Gold #fdc300, Dunkelblau #0c3057."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

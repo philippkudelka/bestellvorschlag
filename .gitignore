@@ -11,3 +11,4 @@ berichte/*.csv
 *.sqlite
 *.db
 .DS_Store
+design/baeckerei-anders-bestellvorschlag.html
